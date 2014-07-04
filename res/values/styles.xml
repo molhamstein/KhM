@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+	    <item name="android:windowBackground">@drawable/signupbg</item>
+    </style>
+
+    <style name="LoginFormContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+    </style>
+    
+    
+    <style name="txtXsmall" parent="@android:style/TextAppearance.Medium"> 
+    <item name="android:textSize">13sp</item>  
+    <item name="android:textStyle">bold</item>
+    <item name="android:typeface">sans</item>
+    </style>
+    
+    <style name="txtsmall" parent="@android:style/TextAppearance.Medium"> 
+        <item name="android:textSize">18sp</item>  
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="txtMed" parent="@android:style/TextAppearance.Medium"> 
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#000</item>  
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+    
+    <style name="txtBig" parent="@android:style/TextAppearance.Medium"> 
+        <item name="android:textSize">26sp</item>  
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:typeface">sans</item>
+    </style>
+        
+</resources>

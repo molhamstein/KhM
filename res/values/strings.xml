@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Khedni ma3ak</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main_map">خدني معك</string>
+    <string name="action_status">Change Ststus</string>
+    <string name="action_pwr">Turn Off</string>
+    <string name="drawer_open">Open Menu</string>
+    <string name="drawer_close">Close Menu</string>
+    <string name="notification_ride_req">Ride Req</string>
+    <string name="notification_message_recieved">Meassage Recieved</string>
+    <string name="ok">موافق</string>
+    <string name="reject">غير موافق</string>
+    
+    <string name="history">History</string>
+	<string name="about_us">ِAbout Us</string>
+	<string name="my_acount">My Acount</string>
+	<string name="settings">ٍsettiings</string>
+	<string name="Notifications">Notifications</string>
+	<string name="Signout">SignOut</string>
+	<string name="Signin">SignIn</string>
+	
+</resources>

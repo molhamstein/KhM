@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/global_bg_color"
+    android:layout_marginBottom="15dp" >
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        
+        >
+        
+         <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/per"
+           android:scaleType="fitXY"
+           
+            />
+        
+        <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@color/notification1"
+           android:layout_marginLeft="5px"
+			
+            >
+            <TextView 
+                android:id="@+id/partner_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textColor="@color/notification_font1"
+                android:textSize="20dp"
+                android:text="سامر الشطة"
+                android:layout_alignParentRight="true"
+                />
+            <TextView 
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+				android:layout_below="@id/partner_name"
+				android:textColor="@color/notification_font2"
+				android:layout_marginTop="7px"
+                android:text="طالب جامعي"
+                android:layout_alignParentRight="true"
+                />
+            <TextView 
+                android:id="@+id/destination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:textColor="@color/notification_font1"
+				android:textSize="20dp"
+                android:text="ساحة الميسات"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                />
+            <TextView 
+                android:id="@+id/destination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:textColor="@color/notification_font1"
+				android:textSize="20dp"
+                android:text="100 ل.س"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="5dp"
+                />
+        </RelativeLayout>
+        
+        
+    </LinearLayout>
+
+    <RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@color/notification4"
+	    android:orientation="horizontal" 
+	    android:layout_marginTop="5dp"
+	    >
+	        <Button android:id="@+id/btn_ok" android:layout_width="wrap_content" android:layout_height="50dp" android:text="@string/ok" android:background="@color/notification2" android:layout_alignParentRight="true" android:layout_marginRight="5dp" android:paddingRight="10dp" android:paddingLeft="10dp"/>
+	        <Button android:id="@+id/btn_no" android:layout_width="wrap_content" android:layout_height="50dp" android:text="@string/reject" android:background="@color/notification3" android:layout_toLeftOf="@id/btn_ok" android:layout_marginRight="5dp" android:paddingRight="10dp" android:paddingLeft="10dp"/>
+	        <ImageButton android:id="@+id/btn_send_msg" android:layout_width="50dp" android:layout_height="50dp" android:text="@string/ok" android:background="@color/notification3" android:layout_alignParentLeft="true" android:src="@drawable/msg" android:scaleType="fitXY" android:layout_marginLeft="5dp"/>
+    </RelativeLayout>
+    
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#ff444444" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_marginTop="20dp"></View>
+
+</LinearLayout>
