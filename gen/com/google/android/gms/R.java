@@ -18,7 +18,7 @@ public final class R {
 		public static final int google_play_services_version = 0x7f090000;
 	}
 	public static final class color {
-		public static final int common_signin_btn_text_dark = 0x7f060021;
+		public static final int common_signin_btn_text_dark = 0x7f060022;
 		public static final int common_signin_btn_light_text_focused = 0x7f060007;
 		public static final int common_signin_btn_light_text_default = 0x7f060004;
 		public static final int common_signin_btn_default_background = 0x7f060008;
@@ -27,7 +27,7 @@ public final class R {
 		public static final int common_action_bar_splitter = 0x7f060009;
 		public static final int common_signin_btn_light_text_pressed = 0x7f060005;
 		public static final int common_signin_btn_dark_text_default = 0x7f060000;
-		public static final int common_signin_btn_text_light = 0x7f060022;
+		public static final int common_signin_btn_text_light = 0x7f060023;
 		public static final int common_signin_btn_light_text_disabled = 0x7f060006;
 		public static final int common_signin_btn_dark_text_focused = 0x7f060003;
 	}

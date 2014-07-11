@@ -27,8 +27,9 @@
     
     <color name="red_msg">#ffec6957</color>
     
-    
     <color name="semi_trans">#99333333</color>
+    
+    <color name="list_elem_bg">#ffdddddd</color>
     
     
 </resources>

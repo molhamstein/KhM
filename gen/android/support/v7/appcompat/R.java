@@ -216,7 +216,7 @@ public final class R {
 		public static final int abc_max_action_buttons = 0x7f090001;
 	}
 	public static final class color {
-		public static final int abc_search_url_text_holo = 0x7f060020;
+		public static final int abc_search_url_text_holo = 0x7f060021;
 		public static final int abc_search_url_text_normal = 0x7f06000a;
 		public static final int abc_search_url_text_pressed = 0x7f06000c;
 		public static final int abc_search_url_text_selected = 0x7f06000b;
@@ -257,7 +257,7 @@ public final class R {
 		public static final int abc_action_bar_home = 0x7f030003;
 		public static final int abc_action_bar_decor_overlay = 0x7f030002;
 		public static final int abc_list_menu_item_radio = 0x7f030013;
-		public static final int support_simple_spinner_dropdown_item = 0x7f030022;
+		public static final int support_simple_spinner_dropdown_item = 0x7f030024;
 		public static final int abc_activity_chooser_view_list_item = 0x7f03000e;
 		public static final int abc_activity_chooser_view_include = 0x7f03000d;
 		public static final int abc_action_bar_title_item = 0x7f030006;

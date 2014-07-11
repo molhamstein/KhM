@@ -5,15 +5,15 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Build;
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.widget.Button;
 
-@SuppressLint("NewApi")
+
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 	
 	public static String KEY_NOTIFS = "enable_notifs" ; 
@@ -21,19 +21,28 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 	public static String KEY_VISIBILITY = "vis_level" ; 
 	
 
+	
+	@SuppressLint("NewApi")
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Add a button to the header list.
-        if (hasHeaders()) {
-            Button button = new Button(this);
-            button.setText("Some action");
-            setListFooter(button);
-        }else {
-        	
-        	getFragmentManager().beginTransaction().replace(android.R.id.content, new Prefs1Fragment()).commit();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
 
+        	addPreferencesFromResource(R.xml.settings);
+        	
+        }else{
+        	
+	        if (hasHeaders()) {
+	            Button button = new Button(this);
+	            button.setText("Some action");
+	            setListFooter(button);
+	        }else {
+	        	
+	        	getFragmentManager().beginTransaction().replace(android.R.id.content, new Prefs1Fragment()).commit();
+	
+	        }
+	        
         }
         
 
