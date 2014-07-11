@@ -44,7 +44,7 @@ public class Map  {
 	
 	
 	public void centerMapOnMyLocation() {
-
+		
 	    //currentlocation = map.getMyLocation();
 
 	    if (currentlocation != null) {

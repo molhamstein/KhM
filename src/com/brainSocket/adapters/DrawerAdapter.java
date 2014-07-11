@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import com.brainSocket.khednima3ak.EventsActivity;
 import com.brainSocket.khednima3ak.R;
+import com.brainSocket.khednima3ak.SettingsActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -32,7 +33,7 @@ public class DrawerAdapter extends BaseAdapter implements OnItemClickListener{
 	  public static DrawerElement [] elements  = {
 		  new DrawerElement(R.string.my_acount, R.drawable.contact, null) ,
 		  new DrawerElement(R.string.Notifications, R.drawable.notifications, EventsActivity.class) ,
-		  new DrawerElement(R.string.settings, R.drawable.settings, null) ,
+		  new DrawerElement(R.string.settings, R.drawable.settings, SettingsActivity.class) ,
 		  new DrawerElement(R.string.history, R.drawable.history, null) , 
 		  new DrawerElement(R.string.Signout, R.drawable.close, null) , 
 		  new DrawerElement(R.string.about_us , R.drawable.about, null) ,
@@ -123,7 +124,7 @@ public class DrawerAdapter extends BaseAdapter implements OnItemClickListener{
 	  
 	@Override
 	public int getCount() {
-		return 5;
+		return elements.length;
 	}
 
 	@Override

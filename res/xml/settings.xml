@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+            android:title="@string/settings_notif_title">
+
+        <CheckBoxPreference
+                android:key="enable_notifs"
+                android:title="@string/settings_notif"
+                android:summary="@string/settings_notif_summary"
+                 />
+        
+        <CheckBoxPreference
+                android:key="enable_notifs_sounds"
+                android:title="@string/settings_notif_sound"
+                android:summary="@string/settings_notif_sound_summary"
+                 />
+
+    </PreferenceCategory>
+
+    
+    <PreferenceCategory
+            android:title="@string/settings_visibity"
+            android:summary="@string/settings_visibile_summary">
+
+        <ListPreference
+	        android:key="vis_level"
+	        android:title="@string/settings_visibity"
+	        android:summary="@string/settings_visibile_summary"
+	        android:dialogTitle="@string/settings_visibity"
+	        android:entries="@array/visibility"
+	        android:entryValues="@array/visibilityValues"
+
+         />
+
+ <!--             
+        <PreferenceScreen
+                android:fragment="com.brainSocket.khednima3ak.SettingsActivity$Prefs1FragmentInner"
+                android:title="inner pref title"
+                android:summary="inner pref summary">
+ 
+            <extra android:name="someKey" android:value="somePrefValue" />
+        </PreferenceScreen>
+
+ 
+        <PreferenceScreen
+                android:title="new activity pref"
+                android:summary="new activity pre summary">
+
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="http://www.android.com" />
+
+        </PreferenceScreen>
+-->
+    </PreferenceCategory>
+
+    <!-- 
+    <PreferenceCategory
+            android:title="pref attr">
+
+        <CheckBoxPreference
+                android:key="parent_checkbox_preference"
+                android:title="parent preff check"
+                android:summary="parent prec check summary" />
+
+ 
+        <CheckBoxPreference
+                android:key="child_checkbox_preference"
+                android:dependency="parent_checkbox_preference"
+                android:layout="?android:attr/preferenceLayoutChild"
+                android:title="child pref"
+                android:summary="child pref summary" />
+
+    </PreferenceCategory>
+ -->
+ 
+</PreferenceScreen>
