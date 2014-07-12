@@ -9,8 +9,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.brainSocket.modules.UserEvent;
-import com.brainSocket.modules.UserEventType;
+import com.brainSocket.models.UserEvent;
+import com.brainSocket.models.UserEventType;
 
 
 public class LocalDataSrc {

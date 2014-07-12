@@ -21,7 +21,7 @@ import com.brainSocket.Views.Map;
 import com.brainSocket.Views.SearchAutoComplete;
 import com.brainSocket.adapters.DrawerAdapter;
 import com.brainSocket.adapters.SuggestionsAdapter;
-import com.brainSocket.modules.User;
+import com.brainSocket.models.User;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;

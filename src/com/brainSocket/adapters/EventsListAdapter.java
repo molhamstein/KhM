@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.brainSocket.khednima3ak.R;
-import com.brainSocket.modules.UserEvent;
+import com.brainSocket.models.UserEvent;
 
 public class EventsListAdapter extends BaseAdapter {
 

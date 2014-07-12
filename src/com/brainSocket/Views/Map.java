@@ -6,7 +6,7 @@ import android.location.Location;
 import android.widget.Toast;
 
 import com.brainSocket.khednima3ak.MainMap;
-import com.brainSocket.modules.User;
+import com.brainSocket.models.User;
 import com.brainSocket.adapters.MapInfoWindowAdapter;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
