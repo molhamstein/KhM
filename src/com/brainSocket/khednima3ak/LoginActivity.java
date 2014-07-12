@@ -9,6 +9,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.database.Cursor;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -227,9 +228,14 @@ public class LoginActivity extends Activity implements Notifiable<String>
 		protected void onPostExecute(final Boolean success) {
 			mAuthTask = null;
 			showProgress(false);
-
+			
+			///success check is neglected here 
+			Intent intent = new Intent(LoginActivity.this,MainMap.class);
+			startActivity(intent);
+			
 			if (success) {
-				finish();
+				
+				//finish();
 			} else {
 				mPasswordView
 						.setError(getString(R.string.error_incorrect_password));

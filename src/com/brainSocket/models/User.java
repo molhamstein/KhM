@@ -19,6 +19,9 @@ public class User {
 	String name ;
 	LatLng location ;
 	String destination ;
+	private float price;
+	private String facebookID;
+	private float rate;
 	
 	//temp constructor
 	public User(int id , String name , LatLng loc , int destId){
@@ -28,6 +31,31 @@ public class User {
 		this.destination = String.valueOf( destId );
 	}
 	
+	public User(int id ,String facebookID, String name , LatLng loc ,float price,UserType userType,float rate)
+	{
+		this.id = id ;
+		this.name = name;
+		this.location = loc ;
+		
+		this.price=price;
+		this.facebookID=facebookID;
+		this.type=userType;
+		this.rate=rate;
+	}
+	
+	public float getPrice()
+	{
+		return this.price;
+	}
+	public float getRate()
+	{
+		return this.rate;
+	}
+	public String getPictureLink()
+	{
+		String pictureLink="http://graph.facebook.com/"+this.facebookID+"/picture?type=square";
+		return pictureLink; 
+	}
 	
 	public UserType getType() {
 		return type;

@@ -22,4 +22,14 @@
 	<string name="Signout">SignOut</string>
 	<string name="Signin">SignIn</string>
 	
+	<string name="settings_notif_title">التنبيهات</string>
+	<string name="settings_notif">الحصول عل التنبيهات</string>
+	<string name="settings_notif_summary">التنبيهات التي تظهر على الشريط العلوي لأندرويد </string>
+	<string name="settings_notif_sound">أصوات التنبيهات</string>
+	<string name="settings_notif_sound_summary">تفعيل أصوات تنبيها شريط اندرويد الرئيسي</string>
+	<string name="settings_visibity">من يستطيع أن يراني</string>
+	<string name="settings_visibile_all">الجميع</string>	
+	<string name="settings_visibile_friends">الأصدقاء فقط</string>
+	<string name="settings_visibile_custom">أصدقاء محددون فقط</string>
+	<string name="settings_visibile_summary">يمكنك هنا تحديد الأشخاص الذين يستطيعون رؤيتك و تبادل الطلبات معك</string>
 </resources>

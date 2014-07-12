@@ -10,7 +10,7 @@ public class ResponseForModel extends AbstractModel
 {
 	private int responseID;
 	
-	public ResponseForModel(int responseID)
+	private ResponseForModel(int responseID)
 	{
 		errors.put(-1, "the <requestID> is not valid");
 		errors.put(-2, "you are not allowed to response for this request cause you are not a car owner");
@@ -26,8 +26,7 @@ public class ResponseForModel extends AbstractModel
 			int flag=o.getInt(KedniApp.flag);
 			if(flag<0)
 				errorIndex=flag;
-			else
-				model=new ResponseForModel(flag);
+			model=new ResponseForModel(flag);
 			return model;
 		}
 		catch(Exception c)

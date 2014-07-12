@@ -3,9 +3,11 @@ package com.brainSocket.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.brainSocket.khednima3ak.KedniApp;
+import com.google.android.gms.maps.model.LatLng;
 
 import android.util.Log;
 
@@ -20,13 +22,23 @@ public class GetUsersAroundMeModel extends AbstractModel
 		users=new ArrayList<UserModel>();
 	}
 	
-	public static GetUsersAroundMeModel createModel(String jsonData)
+	public static List<User> parsingJson(String jsonData)
 	{
 		try
 		{
-			JSONObject o=new JSONObject(jsonData);
-			o.getInt(KedniApp.flag);
-			o.getJSONObject(name)
+			JSONArray usersAroundMe=new JSONArray(jsonData);
+			JSONObject ob=null;
+			List<User> users=new ArrayList<User>();
+			User user=null;
+			for(int i=0;i<usersAroundMe.length();i++)
+			{
+				ob=usersAroundMe.getJSONObject(i);
+				user=new User(ob.getInt("userID"), ob.getString("facebookID"), ob.getString("fullName"),
+						new LatLng(ob.getDouble("posX"), ob.getDouble("posY")), (float)ob.getDouble("price")
+						, UserType.values()[i],(float)ob.getDouble("rate"));
+				users.add(user);
+			}
+			return users;
 		}
 		catch(Exception c)
 		{

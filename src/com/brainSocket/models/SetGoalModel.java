@@ -7,31 +7,29 @@ import com.brainSocket.khednima3ak.KedniApp;
 import android.util.Log;
 
 public class SetGoalModel extends AbstractModel 
-{
+{	
+	private int goalID;
+	
 	private SetGoalModel(int goalID)
 	{
 		errors.put(-1, "there is no place corresponding to <placeID>");
 		this.goalID=goalID;
 	}
-	
-	private int goalID;
-	
 	public int getGoalID()
 	{
 		return this.goalID;
 	}
 	
-	public static SetGoalModel createModel(String jsonData)
+	public static SetGoalModel pasringJson(String jsonData)
 	{
 		try
 		{
-			SetGoalModel m=null;
+			SetGoalModel m;
 			JSONObject o=new JSONObject(jsonData);
 			int flag=o.getInt(KedniApp.flag);
 			if(flag<0)
 				errorIndex=flag;
-			else
-				m=new SetGoalModel(flag);
+			m=new SetGoalModel(flag);
 			return m;
 		}
 		catch(Exception c)
