@@ -1,21 +1,29 @@
 package com.brainSocket.khednima3ak;
 
+import org.json.JSONObject;
+
+import com.brainSocket.data.Notifiable;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity implements Notifiable<String> 
+{
 	/**
 	 * A dummy authentication store containing known user names and passwords.
 	 * TODO: remove after connecting to a real authentication system.
@@ -234,5 +242,36 @@ public class LoginActivity extends Activity {
 			mAuthTask = null;
 			showProgress(false);
 		}
+
+	}
+
+	@Override
+	public void onDataReady(String data) {
+		// TODO Auto-generated method stub
+		try
+		{
+			JSONObject o=new JSONObject(data);
+			int userID=o.getInt("userID");
+			if(userID<0)
+				Toast.makeText(getApplicationContext(), "login error", Toast.LENGTH_SHORT).show();
+			else
+				((KedniApp)getApplication()).setUserID(userID);
+		}
+		catch(Exception c)
+		{
+			Log.e("error", c.getMessage());
+		}
+	}
+
+	@Override
+	public void onCursorReady(Cursor cur) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onDataLoadFail(String msg) {
+		// TODO Auto-generated method stub
+		
 	}
 }

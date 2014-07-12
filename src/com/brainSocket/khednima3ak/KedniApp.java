@@ -6,6 +6,8 @@ import java.io.IOException;
 import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.http.HttpResponseCache;
 import android.view.LayoutInflater;
 
@@ -24,6 +26,10 @@ public class KedniApp extends Application {
 	
 	public static final String PRODUCT_INTENT = "prod" ; 
 	public static final String ADAPTER_INTENT = "adapter" ;
+	public static String PREFERENCES="KHM_PREFERENCES";
+	public static String flag="flag";
+	private Editor editor=null;
+	private static int userID; 
 	
 	private UserNotificationsMgr notificationMgr ;
 
@@ -39,6 +45,9 @@ public class KedniApp extends Application {
 		
 		notificationMgr = new UserNotificationsMgr(this);
 		notificationMgr.createNotification();
+		SharedPreferences sharedpreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+		editor=sharedpreferences.edit();
+		userID=sharedpreferences.getInt("userID", -1);
 		/*
 		enableHttpCaching();
 		loginManager log = loginManager.getInstance() ;
@@ -51,7 +60,19 @@ public class KedniApp extends Application {
 		IS_FIRST_RUN = log.isFirstRun();
 		*/
 	}
-	
+	public static int getUserID()
+	{
+		return userID;
+	}
+	public void setUserID(int userID)
+	{
+		editor.putInt("userID", userID);
+		editor.commit();
+	}
+	public static Context getContext()
+	{
+		return context;
+	}
 	
 	@SuppressLint("NewApi")
 	private void enableHttpCaching() {

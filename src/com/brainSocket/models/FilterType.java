@@ -1,10 +1,10 @@
 package com.brainSocket.models;
 
-public enum UserType 
+public enum FilterType 
 {
-	USER(0) , PASSENGER(1) , DRIVER(2);
+	All(0) , facebookFriends(1) , CustomList(2);
 	private final int value;
-    private UserType(int value) 
+    private FilterType(int value) 
     {
         this.value = value;
     }
