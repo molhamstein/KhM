@@ -65,7 +65,10 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
  
     }
  
-		
+    public void RefreshUsersAroundMe(List<User> users)
+	{
+		//not implemented
+	}
     
 	private void initAutocomplete(){
 		Object ob  = findViewById(R.id.autocomplete) ;
@@ -164,6 +167,8 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
 
 		return false;
 	}
+	
+	
 	
 
 

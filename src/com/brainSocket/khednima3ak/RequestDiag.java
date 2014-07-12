@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.brainSocket.models.Driver;
 import com.brainSocket.models.User;
-import com.brainSocket.models.UserType;
+import com.brainSocket.enums.UserType;
 
 public class RequestDiag extends Dialog {
 

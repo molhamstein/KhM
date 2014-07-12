@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.TextView;
 
+import com.brainSocket.enums.UserType;
 import com.brainSocket.khednima3ak.KedniApp;
 import com.brainSocket.khednima3ak.R;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -22,6 +23,7 @@ public class User {
 	private float price;
 	private String facebookID;
 	private float rate;
+	private boolean isBlocked;
 	
 	//temp constructor
 	public User(int id , String name , LatLng loc , int destId){
@@ -42,7 +44,17 @@ public class User {
 		this.type=userType;
 		this.rate=rate;
 	}
+	public User(int id,String name,boolean isBlocked)
+	{
+		this.id=id;
+		this.name=name;
+		this.isBlocked=isBlocked;
+	}
 	
+	public boolean getIsBlocked()
+	{
+		return this.isBlocked;
+	}
 	public float getPrice()
 	{
 		return this.price;

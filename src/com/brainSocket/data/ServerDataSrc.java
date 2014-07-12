@@ -10,7 +10,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.brainSocket.khednima3ak.KedniApp;
-import com.brainSocket.models.UserType;
+import com.brainSocket.enums.UserSex;
+import com.brainSocket.enums.UserType;
 
 import android.graphics.PointF;
 import android.widget.ImageView;
@@ -21,12 +22,7 @@ public class ServerDataSrc {
 	
 	static final String baseServiceURL  ="http://brain-socket.com/index.php/users";
 	
-	static final String MAIN_ADDS_SERVICE = "/ListMainAds/Ads";
-	static final String CATALOG_SERVICE = "/GetProductDetails/ProductCatalogs";
-	static final String SEARCH_PROD_SERVICE = "/ListProductsSearch";
-	static final String GALLERY_SERVICE = "/ListProductImages/ProductProfiles";
 	static final String REGISTER_SERVICE = "/regsiter";
-	static final String STATIC_CATEGORIE_SERVICE = "/ListCategorizedProducts/ProductCatalogs";
 	static final String CHANGE_USER_STATE_SERVICE="/changeState";
 	static final String SET_GOAL_SERVICE="/setGoal";
 	static final String REQUEST_FOR_SERVICE="/requestFor";
@@ -35,23 +31,55 @@ public class ServerDataSrc {
 	static final String RATE_SERVICE="/rate";
 	static final String UPDATE_MY_POSITION_SERVICE="/updateMyPosition";
 	static final String GET_USERS_AROUND_ME_SERVICE="/getUsersAroundMe";
+	static final String GET_NOTIFICATIONS_SERVICE="/getNotifications";
+	static final String ADD_VEHICLE_SERVICE="/addVehicle";
+	static final String CHANGE_SCOPE_TO_SERVICE="/addVehicle";
+	static final String CHANGE_ACCEPTABLE_SEX_SERVICE="/changeAcceptableSex";
+	static final String GET_PLACES_STARTS_WITH_SERVICE="/changeAcceptableSex";
+	static final String GET_VISIBILITY_AUTHORIZE_USERS_LIST_SERVICE="/changeAcceptableSex";
 	
 	
-	public static final String NEW_USER = "newUser";
-	public static final String USER_ID = "UserID";
-	public static final String USER_Name = "LoginName";
-	public static final String PW = "Password";
-	public static final String ROLE_ID = "RoleID";
-	public static final String IS_ACTIVE = "IsActive";
-	public static final String USER_TYPE = "UserType";
-	
-
+	public void getVisibilityAuthorizeUsersList(Notifiable caller)
+	{
+		String serviceURL = baseServiceURL + GET_VISIBILITY_AUTHORIZE_USERS_LIST_SERVICE ;
+		String fullURL = serviceURL+"/"+KedniApp.getUserID();
+		doRequest(caller, fullURL);
+	}
+	public void getPlacesStartsWith(Notifiable caller,String startedWith)
+	{
+		String serviceURL = baseServiceURL + GET_PLACES_STARTS_WITH_SERVICE ;
+		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+startedWith;
+		doRequest(caller, fullURL);
+	}
+	public void changeAcceptableSex(Notifiable caller,UserSex sex)
+	{
+		String serviceURL = baseServiceURL + CHANGE_ACCEPTABLE_SEX_SERVICE ;
+		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+sex.toString();
+		doRequest(caller, fullURL);
+	}
+	public void changeScopeTo(Notifiable caller,int newScopeRadius)
+	{
+		String serviceURL = baseServiceURL + CHANGE_SCOPE_TO_SERVICE ;
+		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+newScopeRadius;
+		doRequest(caller, fullURL);
+	}
+	public void addVehicle(Notifiable caller,int carModelType,int carColor)
+	{
+		String serviceURL = baseServiceURL + ADD_VEHICLE_SERVICE ;
+		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+carModelType+"/"+carColor;
+		doRequest(caller, fullURL);
+	}
+	public void getNotifications(Notifiable caller)
+	{
+		String serviceURL = baseServiceURL + GET_NOTIFICATIONS_SERVICE ;
+		String fullURL = serviceURL+"/"+KedniApp.getUserID();
+		doRequest(caller, fullURL);
+	}
 	public void register(Notifiable caller,String facebookID,String mobileNumber)
 	{
-		ServerClient client = new ServerClient(caller);
 		String serviceURL = baseServiceURL + REGISTER_SERVICE ;
 		String fullURL = serviceURL+"/"+facebookID+"/"+mobileNumber;
-		client.execute(fullURL);
+		doRequest(caller, fullURL);
 	}
 	
 	public void changeState(Notifiable caller,UserType userType)

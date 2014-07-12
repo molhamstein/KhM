@@ -30,7 +30,16 @@ public class KedniApp extends Application {
 	public static String flag="flag";
 	private Editor editor=null;
 	private static int userID; 
+	private static int goalID;
 	
+	public static void SetGoalID(int goalID)
+	{
+		KedniApp.goalID=goalID;
+	}
+	public static int getGoalID()
+	{
+		return KedniApp.goalID;
+	}
 	private UserNotificationsMgr notificationMgr ;
 
 	@Override
