@@ -9,8 +9,13 @@ package com.google.android.gms;
 public final class R {
 	public static final class id {
 		public static final int terrain = 0x7f070003;
+<<<<<<< HEAD
 		public static final int satellite = 0x7f070002;
 		public static final int none = 0x7f070000;
+=======
+		public static final int none = 0x7f070000;
+		public static final int satellite = 0x7f070002;
+>>>>>>> cdd167ce25dfc7a90d0a1353f4d88c7cb85e4e7d
 		public static final int hybrid = 0x7f070004;
 		public static final int normal = 0x7f070001;
 	}
@@ -18,7 +23,11 @@ public final class R {
 		public static final int google_play_services_version = 0x7f090000;
 	}
 	public static final class color {
+<<<<<<< HEAD
 		public static final int common_signin_btn_text_dark = 0x7f060022;
+=======
+		public static final int common_signin_btn_text_dark = 0x7f060021;
+>>>>>>> cdd167ce25dfc7a90d0a1353f4d88c7cb85e4e7d
 		public static final int common_signin_btn_light_text_focused = 0x7f060007;
 		public static final int common_signin_btn_light_text_default = 0x7f060004;
 		public static final int common_signin_btn_default_background = 0x7f060008;
@@ -27,7 +36,11 @@ public final class R {
 		public static final int common_action_bar_splitter = 0x7f060009;
 		public static final int common_signin_btn_light_text_pressed = 0x7f060005;
 		public static final int common_signin_btn_dark_text_default = 0x7f060000;
+<<<<<<< HEAD
 		public static final int common_signin_btn_text_light = 0x7f060023;
+=======
+		public static final int common_signin_btn_text_light = 0x7f060022;
+>>>>>>> cdd167ce25dfc7a90d0a1353f4d88c7cb85e4e7d
 		public static final int common_signin_btn_light_text_disabled = 0x7f060006;
 		public static final int common_signin_btn_dark_text_focused = 0x7f060003;
 	}
@@ -44,8 +57,13 @@ public final class R {
 		public static final int common_google_play_services_update_button = 0x7f080011;
 		public static final int common_google_play_services_unknown_issue = 0x7f08000d;
 		public static final int auth_client_requested_by_msg = 0x7f080019;
+<<<<<<< HEAD
 		public static final int auth_client_needs_update_title = 0x7f080017;
 		public static final int common_google_play_services_install_title = 0x7f080000;
+=======
+		public static final int common_google_play_services_install_title = 0x7f080000;
+		public static final int auth_client_needs_update_title = 0x7f080017;
+>>>>>>> cdd167ce25dfc7a90d0a1353f4d88c7cb85e4e7d
 		public static final int common_google_play_services_unsupported_title = 0x7f08000e;
 		public static final int common_google_play_services_enable_title = 0x7f080004;
 		public static final int common_google_play_services_install_text_tablet = 0x7f080002;
@@ -70,8 +88,13 @@ public final class R {
 		public static final int MapAttrs_zOrderOnTop = 13;
 		public static final int[] MapAttrs = { 0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007, 0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f01000f };
 		public static final int[] AdsAttrs = { 0x7f010000, 0x7f010001 };
+<<<<<<< HEAD
 		public static final int MapAttrs_cameraTargetLat = 2;
 		public static final int MapAttrs_cameraTargetLng = 3;
+=======
+		public static final int MapAttrs_cameraTargetLng = 3;
+		public static final int MapAttrs_cameraTargetLat = 2;
+>>>>>>> cdd167ce25dfc7a90d0a1353f4d88c7cb85e4e7d
 		public static final int MapAttrs_uiTiltGestures = 9;
 		public static final int MapAttrs_cameraTilt = 4;
 		public static final int AdsAttrs_adUnitId = 1;
@@ -82,8 +105,13 @@ public final class R {
 	public static final class drawable {
 		public static final int common_signin_btn_text_disabled_dark = 0x7f020068;
 		public static final int ic_plusone_medium_off_client = 0x7f020078;
+<<<<<<< HEAD
 		public static final int common_signin_btn_icon_focus_light = 0x7f020061;
 		public static final int common_signin_btn_icon_disabled_focus_light = 0x7f02005e;
+=======
+		public static final int common_signin_btn_icon_disabled_focus_light = 0x7f02005e;
+		public static final int common_signin_btn_icon_focus_light = 0x7f020061;
+>>>>>>> cdd167ce25dfc7a90d0a1353f4d88c7cb85e4e7d
 		public static final int common_signin_btn_text_disabled_focus_light = 0x7f02006a;
 		public static final int common_signin_btn_icon_disabled_light = 0x7f02005f;
 		public static final int common_signin_btn_icon_focus_dark = 0x7f020060;
