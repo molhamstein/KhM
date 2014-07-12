@@ -65,6 +65,8 @@
         </activity>
         <activity android:name="EventsActivity"></activity>
         <activity android:name="SettingsActivity"></activity>
+        <activity android:name="PickRideFriendsActivity"></activity>
+        <activity android:name="AcountActivity"></activity>
     </application>
 
 </manifest>

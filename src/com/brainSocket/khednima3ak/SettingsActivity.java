@@ -3,6 +3,7 @@ package com.brainSocket.khednima3ak;
 import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Build;
@@ -49,10 +50,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         
     }
 
-    /**
-     * Populate the activity with the top-level headers.
-     */
-
+   
 	@Override
     public void onBuildHeaders(List<Header> target) {
         //loadHeadersFromResource(R.xml.pref_headers, target);
@@ -62,9 +60,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 	public void onSharedPreferenceChanged(SharedPreferences arg0, String key) {
 
 		if (KEY_VISIBILITY.equals(key)){
-			
-			
-
+			Intent intent = new Intent(this,PickRideFriendsActivity.class) ;
+			startActivity(intent);
 		}
 		
 	}
@@ -98,6 +95,11 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                         @Override
                         public boolean onPreferenceChange(Preference preference,Object newValue) {
                             //TrackerService.updateStats(Long.decode(newValue.toString()));
+                        	if (newValue.equals("3")){
+ 
+                    			Intent intent = new Intent(getActivity(),PickRideFriendsActivity.class) ;
+                    			startActivity(intent);
+                    		}
                             return true;
                         }
                     });

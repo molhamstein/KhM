@@ -15,9 +15,9 @@
     <string name="reject">غير موافق</string>
     
     <string name="history">History</string>
-	<string name="about_us">ِAbout Us</string>
+	<string name="about_us">About Us</string>
 	<string name="my_acount">My Acount</string>
-	<string name="settings">ٍsettiings</string>
+	<string name="settings">Settings</string>
 	<string name="Notifications">Notifications</string>
 	<string name="Signout">SignOut</string>
 	<string name="Signin">SignIn</string>
@@ -32,4 +32,43 @@
 	<string name="settings_visibile_friends">الأصدقاء فقط</string>
 	<string name="settings_visibile_custom">أصدقاء محددون فقط</string>
 	<string name="settings_visibile_summary">يمكنك هنا تحديد الأشخاص الذين يستطيعون رؤيتك و تبادل الطلبات معك</string>
+	
+	<string name="acount_car_title"> معلومات السيارة </string>
+	<string name="acount_car_color"> لون السيارة </string>
+	<string name="acount_car_have">أملك سيارة</string>
+	<string name="acount_car_type">نوع السيارة </string>
+	
+	<string name="acount_per_title"> المعلومات الشخصية </string>
+	<string name="acount_per_sex"> الجنس </string>
+	<string name="acount_per_age"> العمر </string>
+	
+	<string name="acount_ride_title">التوصيلات</string>
+	<string name="acount_ride_driver">سائق</string>
+	<string name="acount_ride_driver_summary">يمكنك من هنا تحديد ازا كنت تبحث عن توصيلة أو تريد أن تقوم بتوصيل الأشخاص على طريقك</string>
+	<string name="acount_ride_price">التسعيرة</string>
+	<string name="acount_ride_price_summary">يمكنك من هنا تحديد التسعيرة التي تظهر لكل من يطلب توصيلة منك على أن التسعيرة تحسب لكل كيلومتر ك خط نظر بين الموقع الحالي و وجهة الرحلة</string>
+	
+	<string name="acount_ride_price1">1 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price2">5 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price3">10 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price4">20 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price5">50 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price6">75 ليرة لكل كيلومتر</string>
+	
+	<string name="black">أسود</string>
+	<string name="yellow">أصفر</string>
+	<string name="white">أبيض</string>
+	<string name="orange">برتقالي</string>
+	<string name="gray">رمادي</string>
+	<string name="red">أحمر</string>
+	<string name="green">أخضر</string>
+	
+	<string name="bmw">BMW</string>
+	<string name="sozuki">sozuki</string>
+	<string name="kia">KIA</string>
+	<string name="vw">Volks Wagen</string>
+	<string name="mer">Mercides</string>
+	<string name="hondai">Hondai</string>
+	
+	
 </resources>

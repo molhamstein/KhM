@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+            android:title="@string/acount_per_title">
+
+        <CheckBoxPreference
+                android:key="acount_data_sex"
+                android:title="@string/acount_per_sex"
+                 />
+        
+		<EditTextPreference
+		    android:key="acount_data_age"
+		    android:title="@string/acount_per_age"
+		    />
+
+    </PreferenceCategory>
+    
+    
+    <PreferenceCategory
+            android:title="@string/acount_ride_title">
+
+        <CheckBoxPreference
+                android:key="acount_data_driver"
+                android:title="@string/acount_ride_driver"
+                android:summary="@string/acount_ride_driver_summary"
+                 />
+        
+      <ListPreference
+                android:key="acount_data_price"
+                android:title="@string/acount_ride_price"
+                android:summary="@string/acount_ride_price_summary"
+                android:dependency="acount_data_driver "
+                android:entries="@array/ride_price"
+                android:entryValues="@array/ride_price_values"
+                 />
+
+    </PreferenceCategory>
+
+    
+    <PreferenceCategory
+            android:title="@string/acount_car_title">
+
+        
+        <CheckBoxPreference
+                android:key="acount_data_have_car"
+                android:title="@string/acount_car_have"
+                 />
+        
+        <ListPreference
+                android:key="acount_data_car_color"
+                android:title="@string/acount_car_color"
+                android:dependency="acount_data_have_car"
+                android:entries="@array/car_colors"
+                android:entryValues="@array/car_colors_values"
+                 />
+        <ListPreference
+                android:key="acount_data_car_type"
+                android:title="@string/acount_car_type"
+                android:dependency="acount_data_have_car"
+                android:entries="@array/car_types"
+                android:entryValues="@array/car_types_values"
+                 />
+
+    </PreferenceCategory>
+ 
+</PreferenceScreen>

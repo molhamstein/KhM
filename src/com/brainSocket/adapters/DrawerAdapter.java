@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.brainSocket.khednima3ak.AcountActivity;
 import com.brainSocket.khednima3ak.EventsActivity;
 import com.brainSocket.khednima3ak.R;
 import com.brainSocket.khednima3ak.SettingsActivity;
@@ -31,7 +32,7 @@ public class DrawerAdapter extends BaseAdapter implements OnItemClickListener{
 	
 	
 	  public static DrawerElement [] elements  = {
-		  new DrawerElement(R.string.my_acount, R.drawable.contact, null) ,
+		  new DrawerElement(R.string.my_acount, R.drawable.contact, AcountActivity.class) ,
 		  new DrawerElement(R.string.Notifications, R.drawable.notifications, EventsActivity.class) ,
 		  new DrawerElement(R.string.settings, R.drawable.settings, SettingsActivity.class) ,
 		  new DrawerElement(R.string.history, R.drawable.history, null) , 

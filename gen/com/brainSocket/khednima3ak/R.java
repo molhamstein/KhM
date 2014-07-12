@@ -17,6 +17,12 @@ public final class R {
         public static final int abc_slide_out_top=0x7f040005;
     }
     public static final class array {
+        public static final int car_colors=0x7f0d0002;
+        public static final int car_colors_values=0x7f0d0003;
+        public static final int car_types=0x7f0d0004;
+        public static final int car_types_values=0x7f0d0005;
+        public static final int ride_price=0x7f0d0006;
+        public static final int ride_price_values=0x7f0d0007;
         public static final int visibility=0x7f0d0000;
         public static final int visibilityValues=0x7f0d0001;
     }
@@ -1414,9 +1420,27 @@ containing a value of this type.
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f080025;
         public static final int about_us=0x7f080034;
+        public static final int acount_car_color=0x7f080045;
+        public static final int acount_car_have=0x7f080046;
+        public static final int acount_car_title=0x7f080044;
+        public static final int acount_car_type=0x7f080047;
+        public static final int acount_per_age=0x7f08004a;
+        public static final int acount_per_sex=0x7f080049;
+        public static final int acount_per_title=0x7f080048;
+        public static final int acount_ride_driver=0x7f08004c;
+        public static final int acount_ride_driver_summary=0x7f08004d;
+        public static final int acount_ride_price=0x7f08004e;
+        public static final int acount_ride_price1=0x7f080050;
+        public static final int acount_ride_price2=0x7f080051;
+        public static final int acount_ride_price3=0x7f080052;
+        public static final int acount_ride_price4=0x7f080053;
+        public static final int acount_ride_price5=0x7f080054;
+        public static final int acount_ride_price6=0x7f080055;
+        public static final int acount_ride_price_summary=0x7f08004f;
+        public static final int acount_ride_title=0x7f08004b;
         public static final int action_pwr=0x7f08002c;
-        public static final int action_sign_in_register=0x7f080046;
-        public static final int action_sign_in_short=0x7f080047;
+        public static final int action_sign_in_register=0x7f080065;
+        public static final int action_sign_in_short=0x7f080066;
         public static final int action_status=0x7f08002b;
         public static final int app_name=0x7f080027;
         /**   Title for notification shown when GooglePlayServices needs to be
@@ -1442,6 +1466,8 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f080014;
+        public static final int black=0x7f080056;
+        public static final int bmw=0x7f08005d;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -1515,23 +1541,30 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f080013;
         public static final int drawer_close=0x7f08002e;
         public static final int drawer_open=0x7f08002d;
-        public static final int error_field_required=0x7f08004d;
-        public static final int error_incorrect_password=0x7f08004c;
-        public static final int error_invalid_email=0x7f08004a;
-        public static final int error_invalid_password=0x7f08004b;
+        public static final int error_field_required=0x7f08006c;
+        public static final int error_incorrect_password=0x7f08006b;
+        public static final int error_invalid_email=0x7f080069;
+        public static final int error_invalid_password=0x7f08006a;
+        public static final int gray=0x7f08005a;
+        public static final int green=0x7f08005c;
         public static final int hello_world=0x7f080028;
         public static final int history=0x7f080033;
-        public static final int login_progress_signing_in=0x7f080049;
-        public static final int menu_forgot_password=0x7f080048;
+        public static final int hondai=0x7f080062;
+        public static final int kia=0x7f08005f;
+        public static final int login_progress_signing_in=0x7f080068;
+        public static final int menu_forgot_password=0x7f080067;
         public static final int menu_settings=0x7f080029;
+        public static final int mer=0x7f080061;
         public static final int my_acount=0x7f080035;
         public static final int notification_message_recieved=0x7f080030;
         public static final int notification_ride_req=0x7f08002f;
         public static final int ok=0x7f080031;
+        public static final int orange=0x7f080059;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f080044;
-        public static final int prompt_password=0x7f080045;
+        public static final int prompt_email=0x7f080063;
+        public static final int prompt_password=0x7f080064;
+        public static final int red=0x7f08005b;
         public static final int reject=0x7f080032;
         public static final int settings=0x7f080036;
         public static final int settings_notif=0x7f08003b;
@@ -1544,7 +1577,11 @@ containing a value of this type.
         public static final int settings_visibile_friends=0x7f080041;
         public static final int settings_visibile_summary=0x7f080043;
         public static final int settings_visibity=0x7f08003f;
+        public static final int sozuki=0x7f08005e;
         public static final int title_activity_main_map=0x7f08002a;
+        public static final int vw=0x7f080060;
+        public static final int white=0x7f080058;
+        public static final int yellow=0x7f080057;
     }
     public static final class style {
         /** 
@@ -1759,8 +1796,9 @@ containing a value of this type.
         public static final int txtsmall=0x7f0c0083;
     }
     public static final class xml {
-        public static final int pref_headers=0x7f050000;
-        public static final int settings=0x7f050001;
+        public static final int acount=0x7f050000;
+        public static final int pref_headers=0x7f050001;
+        public static final int settings=0x7f050002;
     }
     public static final class styleable {
         /**  ============================================ 

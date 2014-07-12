@@ -12,4 +12,59 @@
         <item name="vis3">3</item>
     </string-array>
     
+    <string-array name="car_colors">
+        <item name="c1">@string/black</item>
+        <item name="c2">@string/white</item>
+        <item name="c3">@string/yellow</item>
+        <item name="c4">@string/gray</item>
+        <item name="c5">@string/red</item>
+        <item name="c6">@string/green</item>
+    </string-array>
+    
+    <string-array name="car_colors_values">
+    	<item name="c1">1</item>
+    	<item name="c2">2</item>
+    	<item name="c3">3</item>
+    	<item name="c4">4</item>
+    	<item name="c5">5</item>
+    	<item name="c6">6</item>
+    </string-array>
+    
+    
+    <string-array name="car_types">
+        <item name="t1">@string/bmw</item>
+        <item name="t2">@string/mer</item>
+        <item name="t3">@string/sozuki</item>
+        <item name="t4">@string/hondai</item>
+        <item name="t5">@string/vw</item>
+        <item name="t5">@string/kia</item>
+    </string-array>
+    
+    <string-array name="car_types_values">
+    	<item name="t1">1</item>
+    	<item name="t2">2</item>
+    	<item name="t3">3</item>
+    	<item name="t4">4</item>
+    	<item name="t5">5</item>
+    	<item name="t6">6</item>
+    </string-array>
+    
+    <string-array name="ride_price">
+        <item name="p1">@string/acount_ride_price1</item>
+		<item name="p2">@string/acount_ride_price2</item>
+		<item name="p3">@string/acount_ride_price3</item>
+		<item name="p4">@string/acount_ride_price4</item>
+		<item name="p5">@string/acount_ride_price5</item>
+		<item name="p6">@string/acount_ride_price6</item>
+    </string-array>
+    
+    <string-array name="ride_price_values">
+        <item name="p1">1</item>
+		<item name="p2">2</item>
+		<item name="p3">3</item>
+		<item name="p4">4</item>
+		<item name="p5">5</item>
+		<item name="p6">6</item>
+    </string-array>
+    
 </resources>

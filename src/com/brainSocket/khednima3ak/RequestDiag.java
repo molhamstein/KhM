@@ -5,9 +5,9 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.brainSocket.modules.Driver;
-import com.brainSocket.modules.User;
-import com.brainSocket.modules.UserType;
+import com.brainSocket.models.Driver;
+import com.brainSocket.models.User;
+import com.brainSocket.models.UserType;
 
 public class RequestDiag extends Dialog {
 

@@ -7,15 +7,8 @@
     android:focusableInTouchMode="false" 
     android:descendantFocusability="blocksDescendants"
   	xmlns:android="http://schemas.android.com/apk/res/android"
-  	android:minHeight="70.0dip"
-    android:background="@drawable/round_corners_bg"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    android:paddingLeft="6dp"
-    android:paddingRight="6dp"
-    android:layout_margin="3dp"
-    android:layout_marginTop="6dp"
-    android:layout_marginBottom="6dp"
+  	android:minHeight="90.0dip"
+  	
   >
   
 	    <RelativeLayout 
@@ -23,7 +16,17 @@
 	        android:orientation="vertical" 
 	        android:layout_width="0dip" 
 	        android:layout_height="match_parent" 
-	        android:layout_weight="1.0">
+	        android:layout_weight="1.0"
+	        
+	        android:background="@drawable/round_corners_bg"
+		    android:paddingTop="10dp"
+		    android:paddingBottom="10dp"
+		    android:paddingLeft="6dp"
+		    android:paddingRight="6dp"
+		    android:layout_margin="3dp"
+		    android:layout_marginTop="6dp"
+		    android:layout_marginBottom="6dp"
+	        >
 	        
 	        <CheckBox 
 	            android:id="@+id/friend_checked"

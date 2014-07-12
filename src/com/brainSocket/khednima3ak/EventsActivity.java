@@ -7,7 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.ListView;
 
 import com.brainSocket.adapters.EventsListAdapter;
-import com.brainSocket.modules.UserEvent;
+import com.brainSocket.models.UserEvent;
 
 public class EventsActivity extends ActionBarActivity {
 
