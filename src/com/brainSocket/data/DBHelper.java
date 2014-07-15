@@ -2,9 +2,9 @@ package com.brainSocket.data;
 
 import java.sql.Date;
 
+import com.brainSocket.enums.UserEventType;
 import com.brainSocket.khednima3ak.KedniApp;
 import com.brainSocket.models.UserEvent;
-import com.brainSocket.models.UserEventType;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

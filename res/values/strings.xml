@@ -3,6 +3,7 @@
 
     <string name="app_name">Khedni ma3ak</string>
     <string name="hello_world">Hello world!</string>
+    <string name="app_id">215238498686613</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main_map">خدني معك</string>
     <string name="action_status">Change Ststus</string>

@@ -2,6 +2,8 @@ package com.brainSocket.khednima3ak;
 
 import java.util.List;
 
+import com.brainSocket.enums.UserType;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,7 +22,8 @@ public class AcountActivity extends PreferenceActivity implements OnSharedPrefer
 	/// not correct /// need to be updated 
 	public static String KEY_NOTIFS = "enable_notifs" ; 
 	public static String KEY_NOTIFS_SOUND = "enable_notifs_sounds" ;
-	public static String KEY_VISIBILITY = "vis_level" ; 
+	public static String KEY_VISIBILITY = "vis_level" ;
+	public static String KEY_DRIVER= "acount_data_driver"; 
 	
 
 	
@@ -55,7 +58,7 @@ public class AcountActivity extends PreferenceActivity implements OnSharedPrefer
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences arg0, String key) {
 
-		if (KEY_VISIBILITY.equals(key)){
+		if (KEY_DRIVER.equals(key)){
 			Intent intent = new Intent(this,PickRideFriendsActivity.class) ;
 			startActivity(intent);
 		}
@@ -81,6 +84,25 @@ public class AcountActivity extends PreferenceActivity implements OnSharedPrefer
             SettingsActivity activity = (SettingsActivity) getActivity() ;
             getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(activity);
             */
+            
+            this.findPreference(KEY_DRIVER).setOnPreferenceChangeListener(
+            		
+                    new OnPreferenceChangeListener() {
+                        @Override
+                        public boolean onPreferenceChange(Preference preference,Object newValue) {
+                            //TrackerService.updateStats(Long.decode(newValue.toString()));
+                        	
+                    		boolean  val ;
+                    		Object ob = newValue ;
+                    		if(newValue.equals(true)){
+                    			KedniApp.dataSrc.serverHandler.changeState(null , UserType.DRIVER) ;
+                    		}else{
+                    			KedniApp.dataSrc.serverHandler.changeState(null , UserType.PASSENGER) ;
+                    		}
+                    		
+                            return true;
+                     }
+            });
             
             
 

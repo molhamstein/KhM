@@ -51,7 +51,10 @@ public class ServerClient extends AsyncTask<String, String ,String> {
 	protected void onPostExecute(String result) {
 		
 		super.onPostExecute(result);
-		caller.onDataReady(result);
+		if(caller != null){
+			caller.onDataReady(result);
+		}
+
 		
 	}
 	

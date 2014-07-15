@@ -10,6 +10,7 @@ import java.util.Locale;
 import android.database.Cursor;
 
 import com.brainSocket.data.DBHelper;
+import com.brainSocket.enums.UserEventType;
 
 public class UserEvent {
 

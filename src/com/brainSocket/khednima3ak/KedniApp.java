@@ -18,14 +18,16 @@ public class KedniApp extends Application {
 	
 	public static DataSrc dataSrc ;
 	public static String lang = "ENGLISH";
+	
 	public static Boolean IS_FIRST_RUN ;
 	
 	public static Context context ;
 	public static LayoutInflater inflater ;
 	
-	
+	public static final String FIRST_RUN_KEY = "FIRSTRUN" ;
 	public static final String PRODUCT_INTENT = "prod" ; 
 	public static final String ADAPTER_INTENT = "adapter" ;
+	
 	public static String PREFERENCES="KHM_PREFERENCES";
 	public static String flag="flag";
 	private Editor editor=null;
@@ -57,17 +59,20 @@ public class KedniApp extends Application {
 		SharedPreferences sharedpreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
 		editor=sharedpreferences.edit();
 		userID=sharedpreferences.getInt("userID", -1);
+		
 		/*
 		enableHttpCaching();
-		loginManager log = loginManager.getInstance() ;
-		IS_FIRST_RUN = log.isFirstRun();
+		
+		*/
+		
+		IS_FIRST_RUN = CheckFirstRun() ;
 		
 		if(IS_FIRST_RUN){
-			log.setFirstRun(false);
+			setFirstRun(false);
 		}
 		
-		IS_FIRST_RUN = log.isFirstRun();
-		*/
+		IS_FIRST_RUN = CheckFirstRun();
+		
 	}
 	public static int getUserID()
 	{
@@ -92,9 +97,20 @@ public class KedniApp extends Application {
               HttpResponseCache.install(httpCacheDir, httpCacheSize);
             } catch (IOException e) {
               //Log.i(Constants.TAG_REPONSE_CACHING_FAILED, "OVER ICS: HTTP response cache failed:" + e);
-            }        
-        
-        
+            }
+    }
+	
+	private boolean CheckFirstRun(){
+		SharedPreferences sharedpreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+		Boolean fRun = sharedpreferences.getBoolean(FIRST_RUN_KEY, true);
+		
+    	return fRun ;
+			
+	}
+	
+	public void setFirstRun(Boolean bool){
+    	editor.putBoolean(FIRST_RUN_KEY, bool);
+    	editor.commit();
     }
 
 	

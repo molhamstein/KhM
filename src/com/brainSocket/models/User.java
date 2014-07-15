@@ -23,11 +23,7 @@ public class User {
 	private float price;
 	private String facebookID;
 	private float rate;
-<<<<<<< HEAD
-	boolean isBlockd ;
-=======
 	private boolean isBlocked;
->>>>>>> cdd167ce25dfc7a90d0a1353f4d88c7cb85e4e7d
 	
 	//temp constructor
 	public User(int id , String name , LatLng loc , int destId){
@@ -55,6 +51,8 @@ public class User {
 		this.isBlocked=isBlocked;
 	}
 	
+	
+
 	public boolean getIsBlocked()
 	{
 		return this.isBlocked;
@@ -114,11 +112,11 @@ public class User {
 	}
 	
 	public boolean getisBlockd() {
-		return isBlockd;
+		return isBlocked;
 	}
 
 	public void setIsBlockd(boolean isBlkd) {
-		this.isBlockd = isBlkd;
+		this.isBlocked = isBlkd;
 	}
 
 	public MarkerOptions getMarkerOptions(){

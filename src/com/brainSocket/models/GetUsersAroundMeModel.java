@@ -6,9 +6,10 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.brainSocket.khednima3ak.KedniApp;
+
 import com.google.android.gms.maps.model.LatLng;
 
+import com.brainSocket.enums.UserType;
 import android.util.Log;
 
 public class GetUsersAroundMeModel extends AbstractModel 
@@ -32,10 +33,13 @@ public class GetUsersAroundMeModel extends AbstractModel
 			User user=null;
 			for(int i=0;i<usersAroundMe.length();i++)
 			{
+				// need to resolve userType
 				ob=usersAroundMe.getJSONObject(i);
-				user=new User(ob.getInt("userID"), ob.getString("facebookID"), ob.getString("fullName"),
+				user = new User(ob.getInt("userID"), ob.getString("facebookID"), ob.getString("fullName"),
 						new LatLng(ob.getDouble("posX"), ob.getDouble("posY")), (float)ob.getDouble("price")
-						, UserType.values()[i],(float)ob.getDouble("rate"));
+						, UserType.values()[i], (float) ob.getDouble("rate") );
+				
+				
 				users.add(user);
 			}
 			return users;

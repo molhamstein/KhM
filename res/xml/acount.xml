@@ -31,7 +31,7 @@
                 android:key="acount_data_price"
                 android:title="@string/acount_ride_price"
                 android:summary="@string/acount_ride_price_summary"
-                android:dependency="acount_data_driver "
+                android:dependency="acount_data_driver"
                 android:entries="@array/ride_price"
                 android:entryValues="@array/ride_price_values"
                  />

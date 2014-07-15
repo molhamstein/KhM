@@ -1,8 +1,17 @@
 package com.brainSocket.khednima3ak;
 
+import java.util.ArrayList;
+
 import org.json.JSONObject;
 
+
 import com.brainSocket.data.Notifiable;
+import com.facebook.HttpMethod;
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.model.*;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -52,6 +61,7 @@ public class LoginActivity extends Activity implements Notifiable<String>
 	private View mLoginFormView;
 	private View mLoginStatusView;
 	private TextView mLoginStatusMessageView;
+	private boolean LoginSuccess = false  ; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +71,9 @@ public class LoginActivity extends Activity implements Notifiable<String>
 
 		// Set up the login form.
 		mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
-		mEmailView = (EditText) findViewById(R.id.email);
+		mEmailView = (EditText) findViewById(R.id.phone_num);
 		mEmailView.setText(mEmail);
-
+/*
 		mPasswordView = (EditText) findViewById(R.id.password);
 		mPasswordView
 				.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -77,7 +87,7 @@ public class LoginActivity extends Activity implements Notifiable<String>
 						return false;
 					}
 				});
-
+*/
 		mLoginFormView = findViewById(R.id.login_form);
 		mLoginStatusView = findViewById(R.id.login_status);
 		mLoginStatusMessageView = (TextView) findViewById(R.id.login_status_message);
@@ -110,15 +120,15 @@ public class LoginActivity extends Activity implements Notifiable<String>
 
 		// Reset errors.
 		mEmailView.setError(null);
-		mPasswordView.setError(null);
+		//mPasswordView.setError(null);
 
 		// Store values at the time of the login attempt.
 		mEmail = mEmailView.getText().toString();
-		mPassword = mPasswordView.getText().toString();
+		//mPassword = mPasswordView.getText().toString();
 
 		boolean cancel = false;
 		View focusView = null;
-
+/*
 		// Check for a valid password.
 		if (TextUtils.isEmpty(mPassword)) {
 			mPasswordView.setError(getString(R.string.error_field_required));
@@ -129,29 +139,43 @@ public class LoginActivity extends Activity implements Notifiable<String>
 			focusView = mPasswordView;
 			cancel = true;
 		}
-
+*/
+		
 		// Check for a valid email address.
 		if (TextUtils.isEmpty(mEmail)) {
 			mEmailView.setError(getString(R.string.error_field_required));
 			focusView = mEmailView;
 			cancel = true;
-		} else if (!mEmail.contains("@")) {
+		}
+		
+		/*else if (!mEmail.contains("@")) {
 			mEmailView.setError(getString(R.string.error_invalid_email));
 			focusView = mEmailView;
 			cancel = true;
-		}
+		}*/
 
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
 			// form field with an error.
 			focusView.requestFocus();
 		} else {
+			
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
-			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
+			//
+			//
+			//
+			//
+			ArrayList<String> perm1=new ArrayList<String>();
+			perm1.add("public_profile");
+			perm1.add("user_friends");
+			perm1.add("email");
+			
+			//Session.openActiveSession(this, true, permissions, callback)
+			Session.StatusCallback callback =  new LoginStatsCallback() ;
+			Session.openActiveSession(LoginActivity.this, true, perm1, callback ) ;
 			showProgress(true);
-			mAuthTask = new UserLoginTask();
-			mAuthTask.execute((Void) null);
+			
 		}
 	}
 
@@ -201,26 +225,26 @@ public class LoginActivity extends Activity implements Notifiable<String>
 	 * the user.
 	 */
 	public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+		String facebookId ;
+		public UserLoginTask(String userId) {
+			this.facebookId  = userId ;
+		}
+		
+		@Override
+		protected void onPreExecute() {
+			
+			
+			super.onPreExecute();
+			  
+		}
+		
 		@Override
 		protected Boolean doInBackground(Void... params) {
 			// TODO: attempt authentication against a network service.
 
-			try {
-				// Simulate network access.
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				return false;
-			}
-
-			for (String credential : DUMMY_CREDENTIALS) {
-				String[] pieces = credential.split(":");
-				if (pieces[0].equals(mEmail)) {
-					// Account exists, return true if the password matches.
-					return pieces[1].equals(mPassword);
-				}
-			}
-
-			// TODO: register the new account here.
+			/////our login methods ;
+			KedniApp.dataSrc.serverHandler.register(LoginActivity.this, facebookId, mEmail) ;
+				
 			return true;
 		}
 
@@ -234,11 +258,9 @@ public class LoginActivity extends Activity implements Notifiable<String>
 			startActivity(intent);
 			
 			if (success) {
-				
 				//finish();
 			} else {
-				mPasswordView
-						.setError(getString(R.string.error_incorrect_password));
+				mPasswordView.setError(getString(R.string.error_incorrect_password));
 				mPasswordView.requestFocus();
 			}
 		}
@@ -258,10 +280,13 @@ public class LoginActivity extends Activity implements Notifiable<String>
 		{
 			JSONObject o=new JSONObject(data);
 			int userID=o.getInt("userID");
-			if(userID<0)
+			if(userID<0){
 				Toast.makeText(getApplicationContext(), "login error", Toast.LENGTH_SHORT).show();
-			else
+				LoginSuccess = false ;
+			}else{
 				((KedniApp)getApplication()).setUserID(userID);
+				LoginSuccess = true ;
+			}
 		}
 		catch(Exception c)
 		{
@@ -278,6 +303,67 @@ public class LoginActivity extends Activity implements Notifiable<String>
 	@Override
 	public void onDataLoadFail(String msg) {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+	}
+	
+	public class  LoginStatsCallback implements Session.StatusCallback {
+
+		@Override
+		public void call(Session session, SessionState state,Exception exception) {
+			Request meRequest ;
+			Request friendsRequest ;
+			
+			if (session.isOpened()){
+				
+	    		meRequest = Request.newMeRequest(session, new Request.GraphUserCallback() {
+
+	    		  // callback after Graph API response with user object
+	    		  @Override
+	    		  public void onCompleted(GraphUser user, Response response) {
+	    			  if (user != null) {
+	    				  Toast.makeText(LoginActivity.this, "Authenticated to facebook ID "+ user.getId(), Toast.LENGTH_LONG).show();
+	    				  
+  	    				  mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
+	    				  
+	    				  mAuthTask = new UserLoginTask( user.getId() );
+	    				  mAuthTask.execute((Void) null);
+	    				  
+	    				  /*
+	    				  TextView welcome = (TextView) findViewById(R.id.lblWelcome);
+	    				  welcome.setText("Hello " + user.getName() + "!");
+	    				  TextView lblUserID=(TextView)findViewById(R.id.lblUserID);
+	    				  lblUserID.setText(user.getId());
+	    				  Log.e("facebookID", user.getId());
+	    				  */
+	    				}
+	    		  }
+	    		});
+	    		
+	    		
+	    		friendsRequest = new Request( session,"/me/friends", null, HttpMethod.GET,
+	    		    new Request.Callback() {
+	    		        public void onCompleted(Response response) {
+	    		            /* handle the result */
+	    		        	//Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+	    		        	Log.i("friends", response.toString());
+	    		        }
+	    		    }
+	    		);
+	    		
+	    		meRequest.executeAsync();
+	    		friendsRequest.executeAsync();
+	    		
+	    	}
+			
+		}
 		
 	}
 }
