@@ -8,6 +8,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.PointF;
 import android.net.http.HttpResponseCache;
 import android.view.LayoutInflater;
 
@@ -25,14 +26,28 @@ public class KedniApp extends Application {
 	public static LayoutInflater inflater ;
 	
 	public static final String FIRST_RUN_KEY = "FIRSTRUN" ;
+	public static final String USER_ID_KEY = "userID" ;
 	public static final String PRODUCT_INTENT = "prod" ; 
 	public static final String ADAPTER_INTENT = "adapter" ;
 	
 	public static String PREFERENCES="KHM_PREFERENCES";
 	public static String flag="flag";
+	
 	private Editor editor=null;
 	private static int userID; 
 	private static int goalID;
+	
+	
+	private static PointF currentloc ;
+	
+	///need to handle inital values for prereence params
+	
+	public static  PointF getCurrentloc() {
+		return currentloc;
+	}
+	public static void setCurrentloc(PointF currentloc) {
+		KedniApp.currentloc = currentloc;
+	}
 	
 	public static void SetGoalID(int goalID)
 	{
@@ -44,6 +59,13 @@ public class KedniApp extends Application {
 	}
 	private UserNotificationsMgr notificationMgr ;
 
+	private void getPreferenceParams (){
+		
+		SharedPreferences sharedpreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+		userID = sharedpreferences.getInt(USER_ID_KEY, -1);
+		Boolean fRun = sharedpreferences.getBoolean(FIRST_RUN_KEY, true);
+	}
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -58,7 +80,7 @@ public class KedniApp extends Application {
 		notificationMgr.createNotification();
 		SharedPreferences sharedpreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
 		editor=sharedpreferences.edit();
-		userID=sharedpreferences.getInt("userID", -1);
+		userID=sharedpreferences.getInt(USER_ID_KEY, -1);
 		
 		/*
 		enableHttpCaching();
@@ -80,7 +102,7 @@ public class KedniApp extends Application {
 	}
 	public void setUserID(int userID)
 	{
-		editor.putInt("userID", userID);
+		editor.putInt(USER_ID_KEY, userID);
 		editor.commit();
 	}
 	public static Context getContext()

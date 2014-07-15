@@ -230,13 +230,7 @@ public class LoginActivity extends Activity implements Notifiable<String>
 			this.facebookId  = userId ;
 		}
 		
-		@Override
-		protected void onPreExecute() {
-			
-			
-			super.onPreExecute();
-			  
-		}
+		
 		
 		@Override
 		protected Boolean doInBackground(Void... params) {

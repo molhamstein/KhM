@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.brainSocket.khednima3ak.KedniApp;
+import com.brainSocket.enums.FilterType;
 import com.brainSocket.enums.UserSex;
 import com.brainSocket.enums.UserType;
 
@@ -20,9 +21,9 @@ public class ServerDataSrc {
 	
 	static final String URL = "https://api.twitter.com/1/statuses/user_timeline/vogella.json";
 	
-	static final String baseServiceURL  ="http://brain-socket.com/index.php/users";
+	static final String baseServiceURL  ="http://brain-socket.com/5ednym3ak/ci/index.php/users";
 	
-	static final String REGISTER_SERVICE = "/regsiter";
+	static final String REGISTER_SERVICE = "/register";
 	static final String CHANGE_USER_STATE_SERVICE="/changeState";
 	static final String SET_GOAL_SERVICE="/setGoal";
 	static final String REQUEST_FOR_SERVICE="/requestFor";
@@ -125,10 +126,10 @@ public class ServerDataSrc {
 		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+position.x+"/"+position.y;
 		doRequest(caller, fullURL);
 	}
-	public void getUsersAroundMe(Notifiable caller,int wantedUserState,PointF position)
+	public void getUsersAroundMe(Notifiable caller,FilterType filterType,PointF position)
 	{
 		String serviceURL = baseServiceURL + GET_USERS_AROUND_ME_SERVICE ;
-		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+wantedUserState+"/"+position.x+"/"+position.y;
+		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+filterType.getValue()+"/"+position.x+"/"+position.y;
 		doRequest(caller, fullURL);
 	}
 	

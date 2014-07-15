@@ -46,7 +46,7 @@ public class GetUsersAroundMeListner extends AbstractModel implements Notifiable
 						, UserType.values()[ob.getInt("userTypeID")],(float)ob.getDouble("rate"));
 				users.add(user);
 			}
-			mainMap.RefreshUsersAroundMe(users);
+			//mainMap.RefreshUsersAroundMe(users);
 		}
 		catch(Exception c)
 		{

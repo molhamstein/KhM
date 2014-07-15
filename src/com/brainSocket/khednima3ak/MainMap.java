@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.brainSocket.Listners.GetUsersAroundMeListner;
 import com.brainSocket.Views.AutoCompleteListener;
 import com.brainSocket.Views.Map;
 import com.brainSocket.Views.SearchAutoComplete;
@@ -38,6 +39,7 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
     private ListView drawerList ;
     public ArrayAdapter<String> autoCompleteAdapter ;
     private SearchAutoComplete autoComplete ;
+    private GetUsersAroundMeListner getUsersCallback ; 
     public List<String> suggestions ;
     ArrayList<User> users ;
  
@@ -50,6 +52,7 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
         	users = new ArrayList<User>();
             initilizeMap();
             initDrawer() ;
+            initData();
                     
             //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             //getSupportActionBar().setHomeButtonEnabled(true);
@@ -65,10 +68,15 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
  
     }
  
-    public void RefreshUsersAroundMe(List<User> users)
+    public void refreshUsersAroundMe(List<User> users)
 	{
 		//not implemented
 	}
+    
+    private void initData(){
+    	getUsersCallback = new GetUsersAroundMeListner(this);
+    	
+    }
     
 	private void initAutocomplete(){
 		Object ob  = findViewById(R.id.autocomplete) ;
@@ -92,6 +100,7 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
             new Handler().postDelayed(new Runnable() {
         		@Override
         		public void run() {
+        			//KedniApp.dataSrc.serverHandler.getUsersAroundMe(getUsersCallback, 0, position)
         			generateData();
         	        map.refreshMap(users);
         			map.centerMapOnMyLocation();

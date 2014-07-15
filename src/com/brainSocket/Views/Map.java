@@ -2,9 +2,11 @@ package com.brainSocket.Views;
 
 import java.util.List;
 
+import android.graphics.PointF;
 import android.location.Location;
 import android.widget.Toast;
 
+import com.brainSocket.khednima3ak.KedniApp;
 import com.brainSocket.khednima3ak.MainMap;
 import com.brainSocket.models.User;
 import com.brainSocket.adapters.MapInfoWindowAdapter;
@@ -17,7 +19,7 @@ import com.google.android.gms.maps.model.Marker;
 public class Map  {
 
 	GoogleMap map ;
-	MainMap activity ; 
+	MainMap activity ;
 	Location currentlocation;
 	
 	
@@ -31,7 +33,9 @@ public class Map  {
 	           @Override
 	           public void onMyLocationChange(Location arg0) {
 	            // TODO Auto-generated method stub
-	        	currentlocation = arg0;   
+	        	currentlocation = arg0;
+	        	//// new to check the prerfomance loss of the casting
+	        	KedniApp.setCurrentloc( new PointF( (float) arg0.getLatitude(),(float) arg0.getLongitude()));
 	            //Toast.makeText(Map.this.activity, "my location is" + arg0.getLongitude() + " , "+arg0.getLatitude(), Toast.LENGTH_LONG).show();
 	           }
 	     });
