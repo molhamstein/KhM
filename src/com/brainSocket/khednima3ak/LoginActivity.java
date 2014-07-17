@@ -69,6 +69,13 @@ public class LoginActivity extends Activity implements Notifiable<String>
 
 		setContentView(R.layout.activity_login);
 
+		if(KedniApp.getUserID() != KedniApp.USER_ID_NULL){
+			Intent intent =  new Intent(this,MainMap.class);
+			startActivity(intent);
+			finish();
+			return ;
+		}
+			
 		// Set up the login form.
 		mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
 		mEmailView = (EditText) findViewById(R.id.phone_num);
@@ -166,6 +173,7 @@ public class LoginActivity extends Activity implements Notifiable<String>
 			//
 			//
 			//
+			
 			ArrayList<String> perm1=new ArrayList<String>();
 			perm1.add("public_profile");
 			perm1.add("user_friends");
@@ -273,7 +281,7 @@ public class LoginActivity extends Activity implements Notifiable<String>
 		try
 		{
 			JSONObject o=new JSONObject(data);
-			int userID=o.getInt("userID");
+			int userID=o.getInt(KedniApp.flag);
 			if(userID<0){
 				Toast.makeText(getApplicationContext(), "login error", Toast.LENGTH_SHORT).show();
 				LoginSuccess = false ;

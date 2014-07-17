@@ -32,6 +32,7 @@ public class GetUsersAroundMeListner extends AbstractModel implements Notifiable
 	@Override
 	public void onDataReady(String data) {
 		// TODO Auto-generated method stub
+		
 		try
 		{
 			JSONArray usersAroundMe=new JSONArray(data);
@@ -46,12 +47,14 @@ public class GetUsersAroundMeListner extends AbstractModel implements Notifiable
 						, UserType.values()[ob.getInt("userTypeID")],(float)ob.getDouble("rate"));
 				users.add(user);
 			}
-			//mainMap.RefreshUsersAroundMe(users);
+			mainMap.refreshUsersAroundMe(users);
 		}
 		catch(Exception c)
 		{
 			Log.e("error",c.getMessage());
 		}
+		
+		
 	}
 
 	@Override

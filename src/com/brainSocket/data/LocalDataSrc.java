@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.brainSocket.enums.UserEventType;
+import com.brainSocket.khednima3ak.KedniApp;
 import com.brainSocket.models.UserEvent;
 
 
@@ -49,7 +50,18 @@ public class LocalDataSrc {
 
 
 	
-public void insertUserEvent(String title ,String desc , UserEventType type , Date date ){
+	
+	public void insertUserEvent(UserEvent event){
+	
+		insertUserEvent(
+				event.getTitle(),
+				event.getDescription(),
+				event.getType(),
+				event.getDate()
+				);
+	}
+
+	public void insertUserEvent(String title ,String desc , UserEventType type , Date date ){
 		
 		ContentValues val = new ContentValues();
 		val.put(DBHelper.EVENT_TITLE, title);

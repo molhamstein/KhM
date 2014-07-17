@@ -14,6 +14,9 @@ import com.brainSocket.enums.UserEventType;
 
 public class UserEvent {
 
+	//keys
+	public static final String TITLE_RIDE_REQ = "RideReq" ;
+	
 	
 	private String title;
 	private String description ;

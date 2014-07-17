@@ -129,6 +129,7 @@ public class ServerDataSrc {
 	public void getUsersAroundMe(Notifiable caller,FilterType filterType,PointF position)
 	{
 		String serviceURL = baseServiceURL + GET_USERS_AROUND_ME_SERVICE ;
+		int id = KedniApp.getUserID() ;
 		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+filterType.getValue()+"/"+position.x+"/"+position.y;
 		doRequest(caller, fullURL);
 	}

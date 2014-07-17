@@ -3,13 +3,13 @@ package com.brainSocket.khednima3ak;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.graphics.PointF;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -22,6 +22,7 @@ import com.brainSocket.Views.Map;
 import com.brainSocket.Views.SearchAutoComplete;
 import com.brainSocket.adapters.DrawerAdapter;
 import com.brainSocket.adapters.SuggestionsAdapter;
+import com.brainSocket.enums.FilterType;
 import com.brainSocket.models.User;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
@@ -70,7 +71,9 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
  
     public void refreshUsersAroundMe(List<User> users)
 	{
-		//not implemented
+		
+    	this.users.clear();
+    	this.users.addAll(users) ;
 	}
     
     private void initData(){
@@ -97,13 +100,20 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
             map.setMyLocationEnabled(true);
             
 
-            new Handler().postDelayed(new Runnable() {
+            final Handler locUpdater =  new Handler();
+            locUpdater.postDelayed(new Runnable() {
         		@Override
         		public void run() {
-        			//KedniApp.dataSrc.serverHandler.getUsersAroundMe(getUsersCallback, 0, position)
-        			generateData();
-        	        map.refreshMap(users);
-        			map.centerMapOnMyLocation();
+        			PointF loc= KedniApp.getCurrentloc() ;
+        			if(loc != null){
+	        			KedniApp.dataSrc.serverHandler.getUsersAroundMe(getUsersCallback, FilterType.All, KedniApp.getCurrentloc());
+	        			//generateData();
+	        	        //map.refreshMap(users);
+	        			map.centerMapOnMyLocation();
+        			}else
+        				locUpdater.postDelayed(this, 9000);
+        				//Handler.postDelayed.this (this, 9000);
+        				Toast.makeText(MainMap.this, "Unable to rettrive location Yet", Toast.LENGTH_LONG).show();
         		}
         	},9000);
             
@@ -144,6 +154,7 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
 	      break;
 	    case R.id.action_ststus:
 	    	map.centerMapOnMyLocation();
+	    	
 	    	break;
 	    	
 	    }

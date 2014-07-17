@@ -58,7 +58,7 @@ public class AcountActivity extends PreferenceActivity implements OnSharedPrefer
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences arg0, String key) {
 
-		if (KEY_DRIVER.equals(key)){
+		if (KedniApp.IS_DRIVER_KEY.equals(key)){
 			Intent intent = new Intent(this,PickRideFriendsActivity.class) ;
 			startActivity(intent);
 		}
@@ -85,7 +85,7 @@ public class AcountActivity extends PreferenceActivity implements OnSharedPrefer
             getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(activity);
             */
             
-            this.findPreference(KEY_DRIVER).setOnPreferenceChangeListener(
+            this.findPreference(KedniApp.IS_DRIVER_KEY).setOnPreferenceChangeListener(
             		
                     new OnPreferenceChangeListener() {
                         @Override

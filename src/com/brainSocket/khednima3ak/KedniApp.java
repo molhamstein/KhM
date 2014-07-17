@@ -6,65 +6,52 @@ import java.io.IOException;
 import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.PointF;
 import android.net.http.HttpResponseCache;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 
 import com.brainSocket.data.DataSrc;
 import com.brainSocket.data.UserNotificationsMgr;
+import com.brainSocket.enums.FilterType;
+import com.brainSocket.enums.UserEventType;
+import com.brainSocket.enums.UserType;
+import com.brainSocket.models.UserEvent;
 
 public class KedniApp extends Application {
+
 	
-	public static DataSrc dataSrc ;
-	public static String lang = "ENGLISH";
-	
-	public static Boolean IS_FIRST_RUN ;
-	
-	public static Context context ;
-	public static LayoutInflater inflater ;
-	
+	//Keys
 	public static final String FIRST_RUN_KEY = "FIRSTRUN" ;
+	public static final String IS_DRIVER_KEY = "acount_data_driver" ;
 	public static final String USER_ID_KEY = "userID" ;
+	public static final int USER_ID_NULL = -1 ; 
 	public static final String PRODUCT_INTENT = "prod" ; 
 	public static final String ADAPTER_INTENT = "adapter" ;
-	
-	public static String PREFERENCES="KHM_PREFERENCES";
 	public static String flag="flag";
 	
+	
+	//members
+	public static DataSrc dataSrc ;
+	public static Boolean IS_FIRST_RUN ;
+	public static Context context ;
+	public static LayoutInflater inflater ;
 	private Editor editor=null;
+	private UserNotificationsMgr notificationMgr ;
+	
+	
+	//global data
 	private static int userID; 
 	private static int goalID;
-	
-	
+	private static UserType CurrentStatus ;
+	private static FilterType filterType ;
 	private static PointF currentloc ;
 	
 	///need to handle inital values for prereence params
 	
-	public static  PointF getCurrentloc() {
-		return currentloc;
-	}
-	public static void setCurrentloc(PointF currentloc) {
-		KedniApp.currentloc = currentloc;
-	}
-	
-	public static void SetGoalID(int goalID)
-	{
-		KedniApp.goalID=goalID;
-	}
-	public static int getGoalID()
-	{
-		return KedniApp.goalID;
-	}
-	private UserNotificationsMgr notificationMgr ;
-
-	private void getPreferenceParams (){
-		
-		SharedPreferences sharedpreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
-		userID = sharedpreferences.getInt(USER_ID_KEY, -1);
-		Boolean fRun = sharedpreferences.getBoolean(FIRST_RUN_KEY, true);
-	}
 	
 	@Override
 	public void onCreate() {
@@ -75,12 +62,14 @@ public class KedniApp extends Application {
 		
 		//this needs to be checked if it has any bad effect on memory 
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
 		notificationMgr = new UserNotificationsMgr(this);
 		notificationMgr.createNotification();
-		SharedPreferences sharedpreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+		SharedPreferences sharedpreferences = PreferenceManager.getDefaultSharedPreferences(this);
 		editor=sharedpreferences.edit();
-		userID=sharedpreferences.getInt(USER_ID_KEY, -1);
+		
+		//setUserID(41);
+		getPreferenceParams () ;
+
 		
 		/*
 		enableHttpCaching();
@@ -96,18 +85,55 @@ public class KedniApp extends Application {
 		IS_FIRST_RUN = CheckFirstRun();
 		
 	}
+	
+	
+	public static  PointF getCurrentloc() {
+		return currentloc;
+	}
+	public static void setCurrentloc(PointF currentloc) {
+		KedniApp.currentloc = currentloc;
+	}
+	
+	public static UserType getCurrentStatus() {
+		return CurrentStatus;
+	}
+	public static void setCurrentStatus(UserType currentStatus) {
+		CurrentStatus = currentStatus;
+	}
+	public static void SetGoalID(int goalID)
+	{
+		KedniApp.goalID=goalID;
+	}
+	public static int getGoalID()
+	{
+		return KedniApp.goalID;
+	}
 	public static int getUserID()
 	{
 		return userID;
 	}
 	public void setUserID(int userID)
 	{
+		KedniApp.userID = userID ;
 		editor.putInt(USER_ID_KEY, userID);
 		editor.commit();
 	}
 	public static Context getContext()
 	{
 		return context;
+	}
+	
+	private void getPreferenceParams (){
+		
+		SharedPreferences sharedpreferences = PreferenceManager.getDefaultSharedPreferences(this);
+		userID = sharedpreferences.getInt(USER_ID_KEY, -1); 
+		Boolean fRun = sharedpreferences.getBoolean(FIRST_RUN_KEY, true);
+		boolean isDriver= sharedpreferences.getBoolean(IS_DRIVER_KEY, true);
+		if (isDriver){
+			CurrentStatus = UserType.DRIVER;
+		}else{
+			CurrentStatus = UserType.PASSENGER ;
+		}
 	}
 	
 	@SuppressLint("NewApi")
@@ -123,7 +149,7 @@ public class KedniApp extends Application {
     }
 	
 	private boolean CheckFirstRun(){
-		SharedPreferences sharedpreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+		SharedPreferences sharedpreferences = PreferenceManager.getDefaultSharedPreferences(this) ;
 		Boolean fRun = sharedpreferences.getBoolean(FIRST_RUN_KEY, true);
 		
     	return fRun ;
@@ -133,7 +159,15 @@ public class KedniApp extends Application {
 	public void setFirstRun(Boolean bool){
     	editor.putBoolean(FIRST_RUN_KEY, bool);
     	editor.commit();
+
     }
+	
+	public static void registerUserEvent (UserEvent event ){
+		//need to handle the rest of the events
+		if(event.getType() == UserEventType.RIDE_REQ_SENT){
+			dataSrc.localHandler.insertUserEvent(event);
+		}
+	}
 
 	
 }
