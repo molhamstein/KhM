@@ -5,14 +5,18 @@ import java.io.IOException;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.PointF;
 import android.net.http.HttpResponseCache;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
+import android.view.View.OnCreateContextMenuListener;
+import android.widget.Toast;
 
 import com.brainSocket.data.DataSrc;
 import com.brainSocket.data.UserNotificationsMgr;
@@ -40,17 +44,20 @@ public class KedniApp extends Application {
 	public static Context context ;
 	public static LayoutInflater inflater ;
 	private Editor editor=null;
-	private UserNotificationsMgr notificationMgr ;
+	public UserNotificationsMgr notificationMgr ;
+	
 	
 	
 	//global data
 	private static int userID; 
-	private static int goalID;
+	private static int goalID = 5;
+	private static int destinationID = 5;
 	private static UserType CurrentStatus ;
 	private static FilterType filterType ;
 	private static PointF currentloc ;
 	
 	///need to handle inital values for prereence params
+	
 	
 	
 	@Override
@@ -63,7 +70,7 @@ public class KedniApp extends Application {
 		//this needs to be checked if it has any bad effect on memory 
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		notificationMgr = new UserNotificationsMgr(this);
-		notificationMgr.createNotification();
+		//notificationMgr.createNotification();
 		SharedPreferences sharedpreferences = PreferenceManager.getDefaultSharedPreferences(this);
 		editor=sharedpreferences.edit();
 		
@@ -84,7 +91,10 @@ public class KedniApp extends Application {
 		
 		IS_FIRST_RUN = CheckFirstRun();
 		
+		
 	}
+	
+	
 	
 	
 	public static  PointF getCurrentloc() {
@@ -118,6 +128,19 @@ public class KedniApp extends Application {
 		editor.putInt(USER_ID_KEY, userID);
 		editor.commit();
 	}
+	public static FilterType getFilterType() {
+		return filterType;
+	}
+	public static void setFilterType(FilterType filterType) {
+		KedniApp.filterType = filterType;
+	}
+	public static int getDestinationID() {
+		return destinationID;
+	}
+	public static void setDestinationID(int destinationID) {
+		KedniApp.destinationID = destinationID;
+	}
+
 	public static Context getContext()
 	{
 		return context;
@@ -167,6 +190,7 @@ public class KedniApp extends Application {
 		if(event.getType() == UserEventType.RIDE_REQ_SENT){
 			dataSrc.localHandler.insertUserEvent(event);
 		}
+	
 	}
 
 	

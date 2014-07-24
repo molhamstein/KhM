@@ -1,5 +1,6 @@
 package com.brainSocket.khednima3ak;
 
+import com.brainSocket.Listners.getVisibilityAuthorizeUsersListListner;
 import com.brainSocket.adapters.RideFriendsListAdapter;
 
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.widget.ListView;
 
 public class PickRideFriendsActivity extends ActionBarActivity {
 
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -16,4 +19,5 @@ public class PickRideFriendsActivity extends ActionBarActivity {
 		ListView listView = (ListView) findViewById(R.id.friends_list);
 		listView.setAdapter(new RideFriendsListAdapter(this));
 	}
+	
 }

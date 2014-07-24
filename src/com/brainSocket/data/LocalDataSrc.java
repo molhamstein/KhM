@@ -37,7 +37,12 @@ public class LocalDataSrc {
 	public List<String> getAreas(String searchTerm){
 		
 		List<String> vals = new ArrayList<String>();
-		String q = "SELECT * FROM "+DBHelper.TABLE_AREA + " WHERE "+DBHelper.AREA_NAME + " LIKE '%" +searchTerm+"%'" ;
+		String q ;
+		if (searchTerm != null){
+			 q = "SELECT * FROM "+DBHelper.TABLE_AREA + " WHERE "+DBHelper.AREA_NAME + " LIKE '%" +searchTerm+"%'" ;
+		}else{
+			 q = "SELECT * FROM "+DBHelper.TABLE_AREA + ";" ;
+		}
 		Cursor cur = db.rawQuery(q, null);
 		cur.moveToFirst();
 		while(!cur.isAfterLast()){
@@ -47,26 +52,46 @@ public class LocalDataSrc {
 		}
 		return vals ;
 	}
-
-
 	
+	
+	public int getAreaID(String areaName){
+		
+		String  q = "SELECT " + DBHelper.ID + " FROM "+DBHelper.TABLE_AREA + " WHERE "+DBHelper.AREA_NAME + " = '" +areaName+"'" ;
+
+		Cursor cur = db.rawQuery(q, null);
+		cur.moveToFirst();
+		int id = 0 ;
+		if(!cur.isAfterLast()){
+			id = cur.getInt(0);
+		}
+		return id ;
+	}
+
+
 	
 	public void insertUserEvent(UserEvent event){
 	
+		if(event.getTitle() != null){
+			
+		}
+		
 		insertUserEvent(
 				event.getTitle(),
 				event.getDescription(),
 				event.getType(),
-				event.getDate()
+				event.getDate(),
+				event.getPartnerId(),
+				event.getPartnerName()
 				);
 	}
 
-	public void insertUserEvent(String title ,String desc , UserEventType type , Date date ){
+	public void insertUserEvent(String title ,String desc , UserEventType type , Date date , int partnerID , String partnerName){
 		
 		ContentValues val = new ContentValues();
 		val.put(DBHelper.EVENT_TITLE, title);
 		val.put(DBHelper.EVENT_DESC, desc);
-		val.put(DBHelper.EVENT_PARTNER_ID, 20); ///// review
+		val.put(DBHelper.EVENT_PARTNER_ID, partnerID); 
+		val.put(DBHelper.EVENT_PARTNER_NAME, partnerName); 
 		val.put(DBHelper.EVENT_TYPE, type.name());
 		val.put(DBHelper.EVENT_date, UserEvent.getFormatedDate(date));
 		

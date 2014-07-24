@@ -65,10 +65,16 @@ public class User {
 	{
 		return this.rate;
 	}
+	//need to check the effects of using HTTPS on the traffic 
 	public String getPictureLink()
 	{
-		String pictureLink="http://graph.facebook.com/"+this.facebookID+"/picture?type=square";
+		String pictureLink="https://graph.facebook.com/"+this.facebookID+"/picture?type=square";
 		return pictureLink; 
+	}
+	
+	public static String getNameById(int id){
+		String pictureLink="http://graph.facebook.com/"+id+"/picture?fields=name";
+		return pictureLink;
 	}
 	
 	public UserType getType() {
@@ -117,6 +123,14 @@ public class User {
 
 	public void setIsBlockd(boolean isBlkd) {
 		this.isBlocked = isBlkd;
+	}
+	
+	public String getFacebookID() {
+		return facebookID;
+	}
+
+	public void setFacebookID(String facebookID) {
+		this.facebookID = facebookID;
 	}
 
 	public MarkerOptions getMarkerOptions(){

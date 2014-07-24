@@ -7,47 +7,44 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.brainSocket.data.Notifiable;
+import com.brainSocket.khednima3ak.CheckUpdatesService;
 import com.brainSocket.khednima3ak.KedniApp;
 import com.brainSocket.khednima3ak.MainMap;
 import com.brainSocket.models.AbstractModel;
 import com.brainSocket.models.User;
+import com.brainSocket.models.UserEvent;
 import com.brainSocket.enums.UserType;
 import com.google.android.gms.maps.model.LatLng;
 
 import android.database.Cursor;
 import android.util.Log;
 
-public class GetUsersAroundMeListner extends AbstractModel implements Notifiable<String>
+public class GetNotificationsListner extends AbstractModel implements Notifiable<String>
 {
-	private MainMap mainMap;
+	private CheckUpdatesService caller ;
 	
-	public GetUsersAroundMeListner(MainMap mainMap)
+	public GetNotificationsListner(CheckUpdatesService caller)
 	{
 		errors.put(-1, "there is no users around you");
 		errors.put(-2, "the < wantedUsersStateID > is wrong");
-		this.mainMap=mainMap;
+		this.caller=caller;
 	}
 	
 
 	@Override
 	public void onDataReady(String data) {
-		// TODO Auto-generated method stub
 		
 		try
 		{
-			JSONArray usersAroundMe=new JSONArray(data);
+			//no need to parse data .... just check if there is new data 
+			JSONArray usersNotification=new JSONArray(data);
 			JSONObject ob=null;
-			List<User> users=new ArrayList<User>();
-			User user=null;
-			for(int i=0;i<usersAroundMe.length();i++)
-			{
-				ob=usersAroundMe.getJSONObject(i);
-				user=new User(ob.getInt("userID"), ob.getString("facebookID"), ob.getString("fullName"),
-						new LatLng(ob.getDouble("posX"), ob.getDouble("posY")), (float)ob.getDouble("price")
-						, UserType.values()[ob.getInt("userTypeID")],(float)ob.getDouble("rate"));
-				users.add(user);
-			}
-			mainMap.refreshUsersAroundMe(users);
+			List<UserEvent> userEvents=new ArrayList<UserEvent>();
+			UserEvent userEvent=null;
+	
+			//broadcast the event
+			//caller.broadcast(userEvents) ;
+			//mainMap.refreshUsersAroundMe(users);
 		}
 		catch(Exception c)
 		{

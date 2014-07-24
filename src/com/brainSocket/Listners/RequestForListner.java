@@ -16,6 +16,7 @@ import com.brainSocket.models.UserEvent;
 
 public class RequestForListner extends AbstractModel implements Notifiable<String> 
 {
+	public static final String AREA_ID_KEY = "AreaID";
 	
 	public RequestForListner()
 	{
@@ -30,7 +31,8 @@ public class RequestForListner extends AbstractModel implements Notifiable<Strin
 		{
 			JSONObject o=new JSONObject(data);
 			int flag=o.getInt(KedniApp.flag);
-			if(flag<0)
+			int areaID = o.getInt(AREA_ID_KEY);
+			if(flag<0 || areaID < 0)
 			{
 				errorIndex=flag;
 				Toast.makeText(KedniApp.getContext(), errors.get(flag), Toast.LENGTH_SHORT).show();
@@ -42,6 +44,8 @@ public class RequestForListner extends AbstractModel implements Notifiable<Strin
 				Date dt = new Date(System.currentTimeMillis());
 				requestRegister.setDate(dt);
 				KedniApp.registerUserEvent(requestRegister);
+				KedniApp.SetGoalID(areaID);
+				KedniApp.setDestinationID(areaID);
 			}
 			
 		}

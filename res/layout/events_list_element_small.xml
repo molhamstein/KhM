@@ -43,34 +43,15 @@
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxLines="4"
+                android:ellipsize="marquee"
 				android:layout_below="@id/partner_name"
 				android:textColor="@color/notification_font2"
-				android:layout_marginTop="7px"
+				android:layout_marginTop="10px"
                 android:text="طالب جامعي"
                 android:layout_alignParentRight="true"
                 />
-            <TextView 
-                android:id="@+id/destination"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-				android:layout_alignParentBottom="true"
-				android:textColor="@color/notification_font1"
-				android:textSize="20dp"
-                android:text="ساحة الميسات"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="5dp"
-                />
-            <TextView 
-                android:id="@+id/destination"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-				android:layout_alignParentBottom="true"
-				android:textColor="@color/notification_font1"
-				android:textSize="20dp"
-                android:text="100 ل.س"
-                android:layout_alignParentLeft="true"
-                android:layout_marginBottom="5dp"
-                />
+           
         </RelativeLayout>
         
         

@@ -28,7 +28,7 @@ public class Map  {
 		map  = m ;
 		this.activity = activity ;
 		init(); 
-		 map.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+		map.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
 
 	           @Override
 	           public void onMyLocationChange(Location arg0) {
@@ -38,7 +38,7 @@ public class Map  {
 	        	KedniApp.setCurrentloc( new PointF( (float) arg0.getLatitude(),(float) arg0.getLongitude()));
 	            //Toast.makeText(Map.this.activity, "my location is" + arg0.getLongitude() + " , "+arg0.getLatitude(), Toast.LENGTH_LONG).show();
 	           }
-	     });
+	    });
 		 
 	}
 	
@@ -66,7 +66,7 @@ public class Map  {
 		for(int i = 0 ; i<users.size() ; i++){
 			User usr = users.get(i); 
 			Marker marker = map.addMarker(usr.getMarkerOptions());
-			marker.setSnippet( String.valueOf( usr.getId() ) );
+			marker.setSnippet( String.valueOf( i ) );
 			
 			marker.showInfoWindow();
 		}			

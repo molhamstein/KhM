@@ -37,7 +37,10 @@ public class ServerDataSrc {
 	static final String CHANGE_SCOPE_TO_SERVICE="/addVehicle";
 	static final String CHANGE_ACCEPTABLE_SEX_SERVICE="/changeAcceptableSex";
 	static final String GET_PLACES_STARTS_WITH_SERVICE="/changeAcceptableSex";
-	static final String GET_VISIBILITY_AUTHORIZE_USERS_LIST_SERVICE="/changeAcceptableSex";
+	static final String GET_VISIBILITY_AUTHORIZE_USERS_LIST_SERVICE="/getVisibilityAuthorizeUsersList";
+	static final String BLOCK_FRIEND_SERVICE="/blockFriend";
+	static final String UNBLOCK_FRIEND_SERVICE="/unblockFriend";
+	
 	
 	
 	public void getVisibilityAuthorizeUsersList(Notifiable caller)
@@ -70,6 +73,18 @@ public class ServerDataSrc {
 		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+carModelType+"/"+carColor;
 		doRequest(caller, fullURL);
 	}
+	public void blockFriend(Notifiable caller,long friendId )
+	{
+		String serviceURL = baseServiceURL + BLOCK_FRIEND_SERVICE ;
+		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+friendId;
+		doRequest(caller, fullURL);
+	}
+	public void unblockFriend(Notifiable caller,long friendId )
+	{
+		String serviceURL = baseServiceURL + UNBLOCK_FRIEND_SERVICE ;
+		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+friendId;
+		doRequest(caller, fullURL);
+	}
 	public void getNotifications(Notifiable caller)
 	{
 		String serviceURL = baseServiceURL + GET_NOTIFICATIONS_SERVICE ;
@@ -99,7 +114,7 @@ public class ServerDataSrc {
 	public void requestFor(Notifiable caller,int destinationUserID,PointF position)
 	{
 		String serviceURL = baseServiceURL + REQUEST_FOR_SERVICE ;
-		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+destinationUserID+"/"+position.x+"/"+position.y;
+		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+destinationUserID+"/"+position.x+"/"+position.y+ "/"+KedniApp.getGoalID();
 		doRequest(caller, fullURL);
 	}
 	public void responseFor(Notifiable caller,int requestID,boolean hasAgreement,PointF position)
@@ -130,7 +145,8 @@ public class ServerDataSrc {
 	{
 		String serviceURL = baseServiceURL + GET_USERS_AROUND_ME_SERVICE ;
 		int id = KedniApp.getUserID() ;
-		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+filterType.getValue()+"/"+position.x+"/"+position.y;
+		int goal =KedniApp.getGoalID() ;
+		String fullURL = serviceURL+"/"+KedniApp.getUserID()+"/"+filterType.getValue()+"/"+position.x+"/"+position.y + "/" + KedniApp.getGoalID();
 		doRequest(caller, fullURL);
 	}
 	

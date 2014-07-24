@@ -1,41 +1,38 @@
 package com.brainSocket.Views;
 
-import com.brainSocket.Listners.SetGoalListner;
-import com.brainSocket.khednima3ak.KedniApp;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
+
+import com.brainSocket.Listners.SetGoalListner;
+import com.brainSocket.khednima3ak.KedniApp;
  
-public class SearchAutoComplete extends AutoCompleteTextView implements OnItemClickListener {
+public class SearchAutoComplete extends AutoCompleteTextView {
  
 	SetGoalListner goalChangeCallback ;
 	
     public SearchAutoComplete(Context context) {
         super(context);
-        setOnItemClickListener(this) ;
-        goalChangeCallback = new SetGoalListner() ;
+        init() ;
     }
      
     public SearchAutoComplete(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setOnItemClickListener(this);
-        goalChangeCallback = new SetGoalListner() ;
+        init();
     }
  
     public SearchAutoComplete(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        setOnItemClickListener(this);
-        goalChangeCallback = new SetGoalListner() ;
+        init();
     }
 
     @Override
     protected void performFiltering(final CharSequence text, final int keyCode) {
         String filterText = "";
-        super.performFiltering(filterText, keyCode);
+        super.performFiltering(text, keyCode);
     }
  
     @Override
@@ -43,11 +40,11 @@ public class SearchAutoComplete extends AutoCompleteTextView implements OnItemCl
         super.replaceText(text);
     }
 
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	
+	private void init (){
 		
-		////need to fill params
-		//KedniApp.dataSrc.serverHandler.setGoal(goalChangeCallback, placeID, position);
+        goalChangeCallback = new SetGoalListner() ;
+       
 	}
  
 }

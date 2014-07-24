@@ -51,14 +51,24 @@
             />
         
             
-            
+        <RatingBar
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stepSize="1" 
+            android:numStars="4"
+            android:rating="4"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_below="@id/sep2"
+            android:layout_toLeftOf="@id/profile_img"/>
+        
         <TextView 
             android:id="@+id/destenation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Destination"
             style="@style/txtBig"
-            android:layout_below="@id/sep2"
+            android:layout_below="@id/rating"
             android:layout_toLeftOf="@id/profile_img"/>
 	        
            

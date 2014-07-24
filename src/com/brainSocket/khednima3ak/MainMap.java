@@ -3,6 +3,10 @@ package com.brainSocket.khednima3ak;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.PointF;
 import android.location.Location;
 import android.os.Bundle;
@@ -12,12 +16,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brainSocket.Listners.GetUsersAroundMeListner;
-import com.brainSocket.Views.AutoCompleteListener;
+import com.brainSocket.Listners.SetGoalListner;
 import com.brainSocket.Views.Map;
 import com.brainSocket.Views.SearchAutoComplete;
 import com.brainSocket.adapters.DrawerAdapter;
@@ -62,18 +70,19 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
             e.printStackTrace();
         }
         
-        generateData();
+        //generateData();
         map.refreshMap(users);
         
         initAutocomplete();
  
     }
+   
  
     public void refreshUsersAroundMe(List<User> users)
 	{
-		
     	this.users.clear();
     	this.users.addAll(users) ;
+    	map.refreshMap(users);
 	}
     
     private void initData(){
@@ -82,14 +91,38 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
     }
     
 	private void initAutocomplete(){
-		Object ob  = findViewById(R.id.autocomplete) ;
-		autoComplete = (SearchAutoComplete) ob ;
-        
-        autoComplete.addTextChangedListener(new AutoCompleteListener(this));
-        suggestions = new ArrayList<String>();
-        
-        autoCompleteAdapter = new SuggestionsAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions);
+		autoComplete = (SearchAutoComplete) findViewById(R.id.autocomplete) ;
+		
+		/*String[] values = new String[] { "Linux", "Ubuntu", "iPhone", "Android" };
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_dropdown_item_1line,
+				values);
+		suggestions = new ArrayList<String>();
+		autoCompleteAdapter = new SuggestionsAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions);
         autoComplete.setAdapter(autoCompleteAdapter);
+        */
+		//autoComplete.setAdapter(adapter);
+       
+        suggestions =  KedniApp.dataSrc.localHandler.getAreas(null);
+        ArrayAdapter<String> adapterStatic2 = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,suggestions);
+        autoCompleteAdapter = new SuggestionsAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions);       
+        autoComplete.setAdapter(adapterStatic2);
+
+        //autoComplete.addTextChangedListener(new AutoCompleteListener(this));
+        autoComplete.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+				TextView tv = (TextView) arg1 ;
+				String areaName = (String) tv.getText();
+				int areaId = KedniApp.dataSrc.localHandler.getAreaID(areaName);
+				KedniApp.dataSrc.serverHandler.setGoal(new SetGoalListner(), areaId, KedniApp.getCurrentloc());
+				//KedniApp.SetGoalID(5);
+				
+			}
+			
+		});
+
  
 	}
 	
@@ -98,7 +131,6 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
             GoogleMap gMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
             map = new Map(this,gMap);
             map.setMyLocationEnabled(true);
-            
 
             final Handler locUpdater =  new Handler();
             locUpdater.postDelayed(new Runnable() {
@@ -190,6 +222,5 @@ public class MainMap extends ActionBarActivity implements OnMarkerClickListener{
 	
 	
 	
-
 
 }

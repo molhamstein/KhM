@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import android.database.Cursor;
 import android.util.Log;
+import android.widget.BaseAdapter;
 import android.widget.Toast;
 
 import com.brainSocket.data.Notifiable;
@@ -19,9 +20,14 @@ import com.google.android.gms.maps.model.LatLng;
 public class getVisibilityAuthorizeUsersListListner extends AbstractModel implements Notifiable<String> 
 {
 
-	public getVisibilityAuthorizeUsersListListner()
+	List<User> users ;
+	BaseAdapter adapter ; 
+	public getVisibilityAuthorizeUsersListListner( List<User> usrs , BaseAdapter adapter )
 	{
 		errors.put(-1, "there is no list");
+		
+		users = usrs ;
+		this.adapter = adapter ;
 	}
 	
 	@Override
@@ -36,9 +42,18 @@ public class getVisibilityAuthorizeUsersListListner extends AbstractModel implem
 			for(int i=0;i<usersAroundMe.length();i++)
 			{
 				ob=usersAroundMe.getJSONObject(i);
-				user=new User(ob.getInt("userID"), ob.getString("fullName"),ob.getBoolean("isBlocked"));
+				String nm = ob.getString("name") ;
+				int b = ob.getInt("isBlocked");
+				if(b == 0) 
+					user=new User(ob.getInt("id"), ob.getString("name"),false);
+				else
+					user=new User(ob.getInt("id"), ob.getString("name"),true);
+				user.setFacebookID(ob.getString("facebookID"));
 				users.add(user);
 			}
+			this.users.clear();
+			this.users.addAll(users);
+			this.adapter.notifyDataSetChanged() ;
 			//mainMap.RefreshUsersAroundMe(users);
 		}
 		catch(Exception c)

@@ -3,6 +3,7 @@ package com.brainSocket.models;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -11,22 +12,38 @@ import android.database.Cursor;
 
 import com.brainSocket.data.DBHelper;
 import com.brainSocket.enums.UserEventType;
+import com.google.android.gms.internal.da;
 
 public class UserEvent {
 
 	//keys
 	public static final String TITLE_RIDE_REQ = "RideReq" ;
 	
+	//need to handle float price
 	
+	// extra1 : value 
+	//extra2 : price 
 	private String title;
 	private String description ;
 	private int id ;
 	private int globalId ;
 	private int partnerId ;
+	private String partnerName ;
 	private UserEventType type ;
-	private Date date ;
+	private Date date ; 
 	private int extraData1 ;
 	private int extraData2 ;
+	
+	public boolean isEventActive() {
+		return isEventActive;
+	}
+
+
+	public void setEventActive(boolean isEventActive) {
+		this.isEventActive = isEventActive;
+	}
+
+	private boolean isEventActive ;
 	
 	
 	public String getTitle() {
@@ -107,10 +124,27 @@ public class UserEvent {
 	public void setExtraData2(int extraData2) {
 		this.extraData2 = extraData2;
 	}
+	public String getPartnerName() {
+		return partnerName;
+	}
 
 
+	public void setPartnerName(String partnerName) {
+		this.partnerName = partnerName;
+	}
+
+	// need to handle time deference between server and the phone
 	public void setDate(Date date) {
-		this.date = date;
+		Date dateNow = Calendar.getInstance().getTime() ;
+		long diff = dateNow.getTime() - date.getTime() ;
+		if(diff >= 0){
+			this.date = date;
+			if(diff < 1000L)
+				isEventActive = true ;
+			return ;
+		}
+		isEventActive = false ;
+		
 	}
 
 

@@ -12,13 +12,18 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.brainSocket.Listners.BlockFriendListener;
+import com.brainSocket.Listners.getVisibilityAuthorizeUsersListListner;
 import com.brainSocket.data.Notifiable;
+import com.brainSocket.khednima3ak.KedniApp;
 import com.brainSocket.khednima3ak.R;
 import com.brainSocket.models.User;
 import com.google.android.gms.maps.model.LatLng;
+import com.squareup.picasso.Picasso;
 
 public class RideFriendsListAdapter extends BaseAdapter implements Notifiable<String> ,OnCheckedChangeListener{
 	
@@ -28,16 +33,21 @@ public class RideFriendsListAdapter extends BaseAdapter implements Notifiable<St
 	  protected Boolean selectable ;
 	  protected List<Integer> approvedFriendsIndexes ;
 	  protected List<User> friends ;
-
+	  getVisibilityAuthorizeUsersListListner listCallback ;
+	  BlockFriendListener BlockCallback ;
 	  
+
+
 	  public RideFriendsListAdapter(Context context) {
 	    super();
 	    this.context = context;
 	  //  list = view ;
 	    friends = new ArrayList<User>() ;
-
+		listCallback = new getVisibilityAuthorizeUsersListListner( friends , this ) ;
+		BlockCallback = new BlockFriendListener () ;
+	    KedniApp.dataSrc.serverHandler.getVisibilityAuthorizeUsersList(listCallback) ;
 	    // here we call the server to get the list of approved ride Friends 
-	    generateStubData();
+	    //generateStubData();
 	  }
 
 	 
@@ -52,14 +62,17 @@ public class RideFriendsListAdapter extends BaseAdapter implements Notifiable<St
 		  rowView = convertView ;
 		}
 		
-		User usr = friends.get(position); 
+		User usr = friends.get(position);
+		ImageView im = (ImageView) rowView.findViewById(R.id.friend_picture);
+		Picasso.with(context).load(usr.getPictureLink()).into(im) ;
+		
 		TextView name = (TextView) rowView.findViewById(R.id.friend_name);
 		name.setText(usr.getName());
 	    
 		 CheckBox chk = (CheckBox) rowView.findViewById(R.id.friend_checked);
-		 chk.setOnCheckedChangeListener(this);
 		 chk.setTag(position);
-		 chk.setChecked(usr.getisBlockd());
+		 chk.setChecked(!usr.getisBlockd());
+		 chk.setOnCheckedChangeListener(this);
 		
 	    return rowView;
 	  }
@@ -106,8 +119,13 @@ public class RideFriendsListAdapter extends BaseAdapter implements Notifiable<St
 	public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
 		
 		int element = (Integer) arg0.getTag();
-        friends.get(element).setIsBlockd(arg1);
-        
+        User friend = friends.get(element);
+        friend.setIsBlockd(!arg1);
+        long id = friend.getId() ;
+        if(arg1){
+        	KedniApp.dataSrc.serverHandler.unblockFriend(BlockCallback, friend.getId()) ;
+        }else
+        	KedniApp.dataSrc.serverHandler.blockFriend(BlockCallback, friend.getId()) ;
 	}
 	
 	

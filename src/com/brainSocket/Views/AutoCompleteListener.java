@@ -7,6 +7,7 @@ import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import com.brainSocket.data.DataSrc;
 import com.brainSocket.khednima3ak.KedniApp;
@@ -49,5 +50,7 @@ public class AutoCompleteListener implements TextWatcher{
         //mainActivity.myAutoComplete.setAdapter(mainActivity.myAdapter);
          
     }
+    
+    
  
 }
