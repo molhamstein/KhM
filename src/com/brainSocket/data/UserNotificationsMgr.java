@@ -13,12 +13,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.brainSocket.Listners.GetNotificationsListner;
 import com.brainSocket.enums.UserEventType;
+import com.brainSocket.khednima3ak.ChatActivity;
 import com.brainSocket.khednima3ak.CheckUpdatesService;
 import com.brainSocket.khednima3ak.EventsActivity;
 import com.brainSocket.khednima3ak.KedniApp;
@@ -32,7 +33,6 @@ public class UserNotificationsMgr {
 	Context context ;
 	private UpdatesEventReceiver updatesEventReceiver ;
 	
-	GetNotificationsListner newNotificationsCallback ;
 	
 	public UserNotificationsMgr(Context con ) {
 
@@ -76,23 +76,41 @@ public class UserNotificationsMgr {
 			    contentText, contentIntent);
 		
 		*/
+		Intent intent = null ;
+		if(event.getType() == UserEventType.MESSAGE_REC){
+			intent = new Intent(context, ChatActivity.class);
+			intent.putExtra(ChatActivity.PEER_ID_KEY, event.getPartnerId()) ;
+			if(ChatActivity.isActivityActive){
+				ChatActivity.refreshChat() ;
+			}
+		} else{
+			intent = new Intent(context, EventsActivity.class);
+		}
+		if(MainMap.isActivvityActive){
+			MainMap.refreshCornerNotification() ;
+		}
+		//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+		//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
+		PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 		
-		Intent intent = new Intent(context, EventsActivity.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-		PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+		Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+		
 
-        Notification mNotification = new NotificationCompat.Builder(context) 
+        NotificationCompat.Builder mNotificationBuilder = new NotificationCompat.Builder(context) 
             .setContentTitle(event.getTitle())
             .setContentText(event.getDescription())
             .setSmallIcon(R.drawable.car)
             .setContentIntent(pIntent)
-            .addAction(R.drawable.car, "View", pIntent)
-            //.addAction(0, "Remind", pIntent)
-            .build();
+            //.addAction(R.drawable.car, "View", pIntent)
+            .setAutoCancel(true);
         
- 
+        if(KedniApp.IsNotifSoundEnabled())
+        	mNotificationBuilder.setSound(soundUri) ; 
+            //.addAction(0, "Remind", pIntent)
+        
+        Notification mNotification = mNotificationBuilder.build() ;
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
- 
+
         // If you want to hide the notification after it was selected, do the code below
         // myNotification.flags |= Notification.FLAG_AUTO_CANCEL;
  
@@ -105,6 +123,7 @@ public class UserNotificationsMgr {
 		
 		String msg  = "Œœ‰Ì „⁄ﬂ" ;
 		String description = " ‰»ÌÂ ÃœÌœ" ;
+		boolean storeInDB = true ;
 		
 		
 		switch (event.getType()) {
@@ -118,7 +137,6 @@ public class UserNotificationsMgr {
 				description = "·„ ÌÊ«›ﬁ" ;
 			else
 				description = "Ê«›ﬁ " ;
-					
 			description += " ⁄·Ï ÿ·» «· Ê’Ì·…" ;			
 			break;
 		case SHARE_RESP_REC:
@@ -127,13 +145,11 @@ public class UserNotificationsMgr {
 				description = "·„ ÌÊ«›ﬁ" ;
 			else
 				description = "Ê«›ﬁ " ;
-					
-			description += " ⁄·Ï ÿ·» «·„‘«—ﬂ…" ;			
- 
+			description += " ⁄·Ï ÿ·» «·„‘«—ﬂ…" ;
 			break;
 		case SHARE_REQ_REC:
 			msg = "œ⁄Ê… „‘«—ﬂ… „Ê«’·«  „‰ " + partnerName;
-			description = partnerName + " Ìœ⁄Êﬂ · ﬁ«”„ «·„Ê«’·«  „⁄Â" ;
+			description =  "  Ìœ⁄Êﬂ · ‘«—ﬂ «·„Ê«’·«  „⁄Â" + partnerName;
 			break;
 		case RIDE_INV_REC:
 			msg = "œ⁄Ê…  Ê’Ì·… „‰ " + partnerName;
@@ -145,20 +161,33 @@ public class UserNotificationsMgr {
 				description = "·„ ÌÊ«›ﬁ" ;
 			else
 				description = "Ê«›ﬁ " ;
-					
-			description += " ⁄·Ï œ⁄Ê ﬂ · Ê’Ì·Â „ﬁ«»· " + event.getExtraData2();
+				description += " ⁄·Ï œ⁄Ê ﬂ · Ê’Ì·Â „ﬁ«»· " + event.getExtraData2();
+			break;
+		case RATING_REC:
+			msg = " ’ÊÌ  „‰ " + partnerName;
+			description = "ﬁ«„ " + partnerName + " " + "»≈⁄ÿ«∆ﬂ  ﬁÌ„« " + event.getExtraData1()  + " ‰ÃÊ„";
+			break;
+		case MESSAGE_REC:
+			msg = "—”«·… „‰ " + partnerName;
+			description = "Ê’· ﬂ —”«·… „‰ " + partnerName ;
+			//storeInDB = false ;
 			break;
 
 		}
 		event.setTitle(msg);
 		event.setDescription(description);
+		
+		if(storeInDB)
 		KedniApp.dataSrc.localHandler.insertUserEvent(event);
+		
 		UserEventType type = event.getType() ; 
-		if(		type == UserEventType.RIDE_INV_REC ||
+		if(	(	type == UserEventType.RIDE_INV_REC ||
 				type == UserEventType.RIDE_INV_RESP_REC ||
 				type == UserEventType.RIDE_REQ_REC ||
 				type == UserEventType.SHARE_REQ_REC ||
-				type == UserEventType.SHARE_RESP_REC  )
+				type == UserEventType.SHARE_RESP_REC ||
+				type == UserEventType.MESSAGE_REC ||
+				type == UserEventType.RIDE_RESP_REC ) && KedniApp.IsNotifEnabled() )
 		createNotification(event);
 	}
 	
@@ -184,12 +213,19 @@ public class UserNotificationsMgr {
 						userEvent.setGlobalId(ob.getInt("eventID"));
 						userEvent.setPartnerId(ob.getInt("userID"));
 						userEvent.setType( UserEventType.fromValue(ob.getInt("eventTypeID")) );
-						userEvent.setExtraData1(ob.getInt("value"));
+						if(userEvent.getType() != UserEventType.MESSAGE_REC){
+							userEvent.setExtraData1(ob.getInt("value"));
+						}else{
+							userEvent.setExtraData1(-1);
+						}
 						userEvent.setExtraData2(ob.getInt("price"));
 						Date date = UserEvent.getFormatedDate(ob.getString("date"));
 						userEvent.setDate(date);
 						userEvents.add(userEvent) ;
 						String  partnerName = ob.getString("userName") ;
+						userEvent.setPartnerName(partnerName);
+						userEvent.setPartnerFBId(ob.getString("facebookID"));
+						
 						HandleNewNotification(userEvent , partnerName) ;
 						
 					}
@@ -201,7 +237,7 @@ public class UserNotificationsMgr {
 					Log.e("error",c.getMessage());
 				}
 			 
-			 Toast.makeText(context,"Triggered by Service! " +  data ,Toast.LENGTH_LONG).show();
+			 //Toast.makeText(context,"Triggered by Service! " +  data ,Toast.LENGTH_LONG).show();
 		  
 		 }
 		 

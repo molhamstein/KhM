@@ -25,11 +25,12 @@ public class LocalDataSrc {
 		db = helper.getWritableDatabase();
 	}
 	
-	public void insertArea(int id , String title ){
+	public void insertArea( int serverAreaId, String title , int parentid  ){
 		
 		ContentValues val = new ContentValues();
-		val.put(DBHelper.ID, id);
 		val.put(DBHelper.AREA_NAME, title);
+		val.put(DBHelper.AREA_ID, serverAreaId);
+		val.put(DBHelper.AREA_PARENT, parentid);
 		
 		long temp = db.insert(DBHelper.TABLE_AREA, null, val);
 	}
@@ -41,12 +42,12 @@ public class LocalDataSrc {
 		if (searchTerm != null){
 			 q = "SELECT * FROM "+DBHelper.TABLE_AREA + " WHERE "+DBHelper.AREA_NAME + " LIKE '%" +searchTerm+"%'" ;
 		}else{
-			 q = "SELECT * FROM "+DBHelper.TABLE_AREA + ";" ;
+			 q = "SELECT * FROM "+DBHelper.TABLE_AREA +" WHERE "+DBHelper.AREA_ID +" != 33 " + ";" ;
 		}
 		Cursor cur = db.rawQuery(q, null);
 		cur.moveToFirst();
 		while(!cur.isAfterLast()){
-			String tmp = cur.getString(1);
+			String tmp = cur.getString(cur.getColumnIndex(DBHelper.AREA_NAME));
 			vals.add(tmp);
 			cur.moveToNext();
 		}
@@ -54,17 +55,51 @@ public class LocalDataSrc {
 	}
 	
 	
+	public List<String> getAllDsitenctAreas(){
+		
+		List<String> vals = new ArrayList<String>();
+		String q ;
+
+		q = "SELECT MAX(" + DBHelper.AREA_NAME + ") FROM " + DBHelper.TABLE_AREA + " GROUP BY " + DBHelper.AREA_ID ;
+		//q = "SELECT * FROM "+DBHelper.TABLE_AREA + " WHERE "+DBHelper.AREA_NAME + " LIKE '%" +searchTerm+"%'" ; 
+
+		Cursor cur = db.rawQuery(q, null);
+		cur.moveToFirst();
+		while(!cur.isAfterLast()){
+			String tmp = cur.getString(0);
+			vals.add(tmp);
+			cur.moveToNext();
+		}
+		return vals ;
+	}
+	
+	
+	
 	public int getAreaID(String areaName){
 		
-		String  q = "SELECT " + DBHelper.ID + " FROM "+DBHelper.TABLE_AREA + " WHERE "+DBHelper.AREA_NAME + " = '" +areaName+"'" ;
+		String  q = "SELECT " + DBHelper.AREA_ID + " FROM "+DBHelper.TABLE_AREA + " WHERE "+DBHelper.AREA_NAME + " = '" +areaName+"'" ;
 
 		Cursor cur = db.rawQuery(q, null);
 		cur.moveToFirst();
 		int id = 0 ;
 		if(!cur.isAfterLast()){
-			id = cur.getInt(0);
+			id = cur.getInt(cur.getColumnIndex(DBHelper.AREA_ID));
 		}
 		return id ;
+	}
+	
+	
+	public String getAreaByID(int id){
+		
+		String  q = "SELECT " + DBHelper.AREA_NAME + " FROM "+DBHelper.TABLE_AREA + " WHERE "+DBHelper.AREA_ID + " = " +id+" ;" ;
+
+		Cursor cur = db.rawQuery(q, null);
+		cur.moveToFirst();
+		String name = " " ;
+		if(!cur.isAfterLast()){
+			name = cur.getString(cur.getColumnIndex(DBHelper.AREA_NAME));
+		}
+		return name;
 	}
 
 
@@ -74,18 +109,22 @@ public class LocalDataSrc {
 		if(event.getTitle() != null){
 			
 		}
-		
+		int isActive = (event.isEventActive())? 1 : 0 ; 
 		insertUserEvent(
 				event.getTitle(),
 				event.getDescription(),
 				event.getType(),
 				event.getDate(),
 				event.getPartnerId(),
-				event.getPartnerName()
+				event.getPartnerName(),
+				event.getGlobalId(),
+				isActive,
+				event.getPartnerFBId()
+				
 				);
 	}
 
-	public void insertUserEvent(String title ,String desc , UserEventType type , Date date , int partnerID , String partnerName){
+	public void insertUserEvent(String title ,String desc , UserEventType type , Date date , int partnerID , String partnerName , int globalId , int isActive , String FBID){
 		
 		ContentValues val = new ContentValues();
 		val.put(DBHelper.EVENT_TITLE, title);
@@ -93,8 +132,10 @@ public class LocalDataSrc {
 		val.put(DBHelper.EVENT_PARTNER_ID, partnerID); 
 		val.put(DBHelper.EVENT_PARTNER_NAME, partnerName); 
 		val.put(DBHelper.EVENT_TYPE, type.name());
+		val.put(DBHelper.EVENT_GLOBAL_ID, globalId);
 		val.put(DBHelper.EVENT_date, UserEvent.getFormatedDate(date));
-		
+		val.put(DBHelper.EVENT_IS_ACTIVE, isActive);
+		val.put(DBHelper.EVENT_PARTNER_FB_ID, FBID);
 		
 		long temp = db.insert(DBHelper.TABLE_EVENT, null, val);
 	}
@@ -108,7 +149,24 @@ public class LocalDataSrc {
 		vals = UserEvent.getListFromCursor(cur);
 		return vals ;
 	}
+	
+	
+	public List<UserEvent> getNoneMessagingUserEvents(){
+		
+		List<UserEvent> vals = new ArrayList<UserEvent>();
+		String q = "SELECT * FROM "+DBHelper.TABLE_EVENT + " WHERE "+DBHelper.EVENT_TYPE +" != '"+UserEventType.MESSAGE_REC.name() +"' ;" ;
+		Cursor cur = db.rawQuery(q, null);
+		
+		vals = UserEvent.getListFromCursor(cur);
+		return vals ;
+	}
 
+	public void setEventActiveByGlobalId(int globalId , int active){
+		ContentValues v = new ContentValues() ;
+		v.put(DBHelper.EVENT_IS_ACTIVE, active);
+		
+		long temp = db.update(DBHelper.TABLE_EVENT, v, DBHelper.EVENT_GLOBAL_ID + " = " + globalId, null);
+	}
 	
 	
 	/*

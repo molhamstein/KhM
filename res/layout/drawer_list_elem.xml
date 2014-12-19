@@ -9,10 +9,12 @@
 	    android:minHeight="70.0dip" >    
 	    <ImageView 
 	        android:id="@+id/drawable_icon" 
-	        android:layout_width="wrap_content" 
-	        android:layout_height="wrap_content" 
+	        android:layout_width="@dimen/drawer_icon_size" 
+	        android:layout_height="@dimen/drawer_icon_size" 
 			android:src="@drawable/close" 
-			android:scaleType="fitXY" />
+			android:scaleType="fitXY"
+			android:padding="2dp"
+			android:layout_marginLeft="9dp" />
 	    
 	    <RelativeLayout android:gravity="center" 
 	        android:orientation="vertical" 
@@ -23,10 +25,10 @@
 	            android:ellipsize="marquee" 
 	            android:id="@+id/title" 
 	            android:textSize="20sp"
-	            android:layout_marginLeft="30dp"
 	            android:layout_width="match_parent" 
 	            android:layout_height="wrap_content"
 	            android:textColor="#ddd" 
+	            android:gravity="center_horizontal"
 	            android:layout_marginBottom="4.0dip" 
 	            android:text="signout"/>
 	    </RelativeLayout>

@@ -1,9 +1,5 @@
 package com.brainSocket.khednima3ak;
 
-import java.util.List;
-
-import com.brainSocket.enums.UserType;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +11,8 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.widget.Button;
+
+import com.brainSocket.enums.UserType;
 
 
 public class AcountActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
@@ -92,8 +90,6 @@ public class AcountActivity extends PreferenceActivity implements OnSharedPrefer
                         public boolean onPreferenceChange(Preference preference,Object newValue) {
                             //TrackerService.updateStats(Long.decode(newValue.toString()));
                         	
-                    		boolean  val ;
-                    		Object ob = newValue ;
                     		if(newValue.equals(true)){
                     			KedniApp.dataSrc.serverHandler.changeState(null , UserType.DRIVER) ;
                     		}else{

@@ -1,44 +1,42 @@
 package com.brainSocket.adapters;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.brainSocket.khednima3ak.AcountActivity;
-import com.brainSocket.khednima3ak.EventsActivity;
-import com.brainSocket.khednima3ak.R;
-import com.brainSocket.khednima3ak.SettingsActivity;
-
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.brainSocket.enums.UserType;
+import com.brainSocket.khednima3ak.AboutUsActivity;
+import com.brainSocket.khednima3ak.ChangeStateDiag;
+import com.brainSocket.khednima3ak.EventsActivity;
+import com.brainSocket.khednima3ak.KedniApp;
+import com.brainSocket.khednima3ak.MainMap;
+import com.brainSocket.khednima3ak.R;
+import com.brainSocket.khednima3ak.SettingsActivity;
+import com.brainSocket.khednima3ak.SimpleTourActivity;
 
 public class DrawerAdapter extends BaseAdapter implements OnItemClickListener{
 	
 	
 	  public static DrawerElement [] elements  = {
-		  new DrawerElement(R.string.my_acount, R.drawable.contact, AcountActivity.class) ,
 		  new DrawerElement(R.string.Notifications, R.drawable.notifications, EventsActivity.class) ,
-		  new DrawerElement(R.string.settings, R.drawable.settings, SettingsActivity.class) ,
-		  new DrawerElement(R.string.history, R.drawable.history, null) , 
-		  new DrawerElement(R.string.Signout, R.drawable.close, null) , 
-		  new DrawerElement(R.string.about_us , R.drawable.about, null) ,
-		  new DrawerElement(R.string.Signin, R.drawable.settings, null)
+		  new DrawerElement(R.string.settings, R.drawable.settings, SettingsActivity.class) , 
+		  new DrawerElement(R.string.schedule , R.drawable.clipboard, null),  		// indicates Schuduling mode 
+		  new DrawerElement(R.string.about_app , R.drawable.about, SimpleTourActivity.class),
+		  new DrawerElement(R.string.about_us , R.drawable.info, AboutUsActivity.class)
 		  };
 	
 	  protected final Context context;
@@ -139,13 +137,48 @@ public class DrawerAdapter extends BaseAdapter implements OnItemClickListener{
 	}
 
 
-	
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		
 		if(elements[arg2].dest != null){	
 			Intent intent = new Intent(context, elements[arg2].dest);
 			context.startActivity(intent);
+		}else {		// indiacates scheduling listItem
+			startSchedulingDialog() ;
+		}
+	}
+	
+	
+	private void startSchedulingDialog (){
+		if(KedniApp.getCurrentStatus() != UserType.DRIVER){
+			AlertDialog.Builder builder = new AlertDialog.Builder(context);
+			builder.setTitle(R.string.sched_state_change_diag_title).
+			setMessage(R.string.sched_state_change_diag_msg).
+			setPositiveButton(R.string.ok, new OnClickListener() {
+				@Override
+				public void onClick(DialogInterface arg0, int arg1) {
+					KedniApp.dataSrc.serverHandler.changeState(null, UserType.DRIVER);
+					KedniApp.setCurrentStatus(UserType.DRIVER); // TODO should be moved to the listener
+					MainMap main = (MainMap) context ;
+					main.statusChanged();
+					arg0.dismiss();
+					
+					//start schedDialog
+					MainMap mainActivity = (MainMap) context ;
+					mainActivity.enterShedulingMode(null) ;// null indicates that we want to create new schedTrip , not edting an existing trip
+				}
+			}).
+			setNegativeButton(R.string.cansle, new OnClickListener() {
+				@Override
+				public void onClick(DialogInterface arg0, int arg1) {
+					arg0.dismiss();
+				}
+			});
+			
+			Dialog dialog = builder.create() ;
+			dialog.show();
+		}else{
+			MainMap mainActivity = (MainMap) context ;
+			mainActivity.enterShedulingMode(null) ;
 		}
 	}
 	
@@ -155,7 +188,7 @@ public class DrawerAdapter extends BaseAdapter implements OnItemClickListener{
 		int iconId ;
 		Class dest ;
 		
-		public DrawerElement(int str , int ico , Class dest) {
+		public DrawerElement(int str , int ico , Class<?> dest) {
 			stringId = str ;
 			iconId = ico ;
 			this.dest = dest ;

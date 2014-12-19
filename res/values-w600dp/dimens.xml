@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="diag_req_image_holder">300dp</dimen>
+    <dimen name="diag_sch_image_holder">300dp</dimen>
+    
+    <dimen name="diag_sch_price_size">50sp</dimen>
+    
+    <dimen name="simple_tour_icon_size">120dp</dimen>
+    <dimen name="simple_tour_font_size">18sp</dimen>
+    
+    <dimen name="diag_pick_time_seek_size">300dp</dimen>
+    <dimen name="diag_pick_time_font_size">32sp</dimen>
+    
+    <dimen name="verification_padding">35dp</dimen>
+    <dimen name="verification_desc_font_size">20sp</dimen>
+
+</resources>

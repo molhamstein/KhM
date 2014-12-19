@@ -15,10 +15,11 @@
         >
         
          <ImageView
+            android:id="@+id/img_event"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/per"
-           android:scaleType="fitXY"
+            android:scaleType="fitXY"
            
             />
         
@@ -77,6 +78,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/btn_holder"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:background="@color/notification4"

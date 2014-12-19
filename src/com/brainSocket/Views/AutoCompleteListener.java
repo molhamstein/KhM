@@ -1,18 +1,13 @@
 package com.brainSocket.Views;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
-import com.brainSocket.data.DataSrc;
+
 import com.brainSocket.khednima3ak.KedniApp;
 import com.brainSocket.khednima3ak.MainMap;
-import com.google.android.gms.internal.da;
  
 public class AutoCompleteListener implements TextWatcher{
  

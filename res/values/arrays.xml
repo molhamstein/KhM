@@ -7,10 +7,34 @@
     </string-array>
     
     <string-array name="visibilityValues">
-        <item name="vis1">1</item>
-        <item name="vis2">2</item>
-        <item name="vis3">3</item>
+        <item name="vis1">0</item>
+        <item name="vis2">1</item>
+        <item name="vis3">2</item>
     </string-array>
+    
+    
+    <string-array name="userType">
+        <item name="type1">@string/settings_user_type_passenger</item>
+        <item name="type2">@string/settings_user_type_driver</item>
+    </string-array>
+    
+    <string-array name="userTypeValues">
+        <item name="type1">0</item>
+        <item name="type2">1</item>
+    </string-array>
+    
+    <string-array name="userssex">
+        <item name="type1">@string/female</item>
+        <item name="type2">@string/male</item>
+        <item name="type2">@string/both</item>
+    </string-array>
+    
+    <string-array name="userssexValues">
+        <item name="type1">0</item>
+        <item name="type2">1</item>
+        <item name="type2">2</item>
+    </string-array>
+    
     
     <string-array name="car_colors">
         <item name="c1">@string/black</item>
@@ -50,21 +74,27 @@
     </string-array>
     
     <string-array name="ride_price">
+        <item name="p0">@string/acount_ride_price0</item>
         <item name="p1">@string/acount_ride_price1</item>
 		<item name="p2">@string/acount_ride_price2</item>
 		<item name="p3">@string/acount_ride_price3</item>
 		<item name="p4">@string/acount_ride_price4</item>
 		<item name="p5">@string/acount_ride_price5</item>
 		<item name="p6">@string/acount_ride_price6</item>
+		<item name="p7">@string/acount_ride_price7</item>
+		<item name="p8">@string/acount_ride_price8</item>
     </string-array>
     
     <string-array name="ride_price_values">
+        <item name="p0">0</item>
         <item name="p1">1</item>
 		<item name="p2">2</item>
 		<item name="p3">3</item>
 		<item name="p4">4</item>
 		<item name="p5">5</item>
 		<item name="p6">6</item>
+		<item name="p7">7</item>
+		<item name="p8">8</item>
     </string-array>
     
 </resources>

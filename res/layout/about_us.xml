@@ -1,0 +1,128 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/semi_trans_bg" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/brain_logo_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:contentDescription="brain-socket logo"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/brain_text" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/brain_logo_text"
+            android:layout_marginTop="15dp"
+            android:alpha="0.1"
+            android:padding="15dp"
+            android:src="@drawable/brain_logo" />
+
+        <TextView
+            android:id="@+id/text_aboutus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/brain_logo_text"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:singleLine="false"
+            android:text="@string/about_us_text"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/about_links"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_aboutus"
+            android:layout_marginTop="25dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/about_us_more"
+            android:textColor="@android:color/white" />
+
+        <LinearLayout
+            android:id="@+id/about_links_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_below="@id/about_links"
+            android:orientation="horizontal"
+            android:padding="8dp" >
+
+            <ImageView
+                android:id="@+id/img_kedni_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:src="@drawable/kedni_logo" />
+
+            <ImageView
+                android:id="@+id/img_brain_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:src="@drawable/brain_logo_small_w" />
+
+            <ImageView
+                android:id="@+id/img_face_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:src="@drawable/btn_facebook_small" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title_dev_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_below="@id/about_links_container"
+            android:text="@string/dev_team_title"
+            android:textColor="@android:color/white"
+            />
+        
+        <LinearLayout
+            android:id="@+id/dev_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/title_dev_team"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:text="@string/samer"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:text="@string/molham"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

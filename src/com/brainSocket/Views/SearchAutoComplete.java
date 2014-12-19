@@ -2,20 +2,18 @@ package com.brainSocket.Views;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
 
 import com.brainSocket.Listners.SetGoalListner;
-import com.brainSocket.khednima3ak.KedniApp;
  
 public class SearchAutoComplete extends AutoCompleteTextView {
  
 	SetGoalListner goalChangeCallback ;
+	Context context ;
 	
     public SearchAutoComplete(Context context) {
         super(context);
+        this.context  = context ;  
         init() ;
     }
      
@@ -43,7 +41,7 @@ public class SearchAutoComplete extends AutoCompleteTextView {
 	
 	private void init (){
 		
-        goalChangeCallback = new SetGoalListner() ;
+        goalChangeCallback = new SetGoalListner(context) ;
        
 	}
  

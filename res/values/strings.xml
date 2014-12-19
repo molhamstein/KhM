@@ -1,25 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Khedni ma3ak</string>
+    <string name="app_name">خدني معك</string>
     <string name="hello_world">Hello world!</string>
     <string name="app_id">215238498686613</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main_map">خدني معك</string>
-    <string name="action_status">Change Ststus</string>
-    <string name="action_pwr">Turn Off</string>
+    <string name="action_status">تغير الحالة</string>
+    <string name="action_pwr">اطفاء البرنامج</string>
     <string name="drawer_open">Open Menu</string>
     <string name="drawer_close">Close Menu</string>
     <string name="notification_ride_req">Ride Req</string>
-    <string name="notification_message_recieved">Meassage Recieved</string>
+    <string name="notification_message_recieved">Meassage Received</string>
+    <string name="phone">الجوال</string>
     <string name="ok">موافق</string>
     <string name="reject">غير موافق</string>
+    <string name="cansle">إلغاء</string>
+    <string name="delete">حذف</string>
+    <string name="pick_dest">إختر وجهتك</string>
+    <string name="pick_state">إختر حالتك</string>
+    <string name="auth_msg">شكرا لإشتراكك معنا , ستصلك رسالة تحتوي على رمز التأكيد على هاتفك الجوال</string>
+    <string name="auth_hint">رمز التأكيد</string>
+    <string name="error_incorrect_activation">رمز التفعيل غير صحيح</string>
+    <string name="error_signingin">فشلت عملية تسجيل الدخول ... أعد المحاولة</string>
+    <string name="error_connection_failed">تعذر إتمام العملية ... خطأ في الإتصال</string>
+    <string name="activation_msg_is_sent">تم ارسال رسالة التأكيد الى رقم هاتفك</string>
+    <string name="error_global_phone">لا تستخدم رقم هاتف دولي </string>
+    <string name="error_short_phone_num">رقم الهاتف غير صحيح .... يجب أن يكون الرقم من عشر خانات</string>
+    <string name="error_incorrect_phone_num">رقم الهاتف غير صحيح ....</string>
+    <string name="error_intrnet">الرجاء التأكد من إتصال الشبكة  يحتاج خدني معك الى اتصال دائم بشبكة الإنترنت ....</string>
+    <string name="error_intrnet_title">الرجاء التأكد من إتصال الشبكة</string>
+    <string name="btn_activate_intrnet">تفعيل الإنترنت</string>
+    <string name="btn_activate_intrnet_no">كلا</string>
+    <string name="error_location_service">الرجاء التأكد من أن خدمة المواقع فعالة</string>
+    <string name="error_location_service_title">يجب تفعيل خدمة المواقع</string>
+    <string name="error_update_app_title">تحديث التطبيق</string>
+    <string name="error_update_app_desc">ان نسخة التطبيق لديك قديمة و لم تعد مدعومة \n هل تريد تحميل النسخة الأحدث ؟</string>
+    <string name="btn_activate_location_service">تفعيل الخدمة</string>
+    <string name="btn_activate_location_service_no">كلا</string>
+    <string name="action_activate">تفعيل</string>
+    <string name="action_resend_activation">إعادة ارسال رمز التفعيل</string>
+    <string name="choose_destination">قم بإختيار وجهتك</string>
+    <string name="retriving_location">جاري البحث عن الموقع</string>
+    <string name="pleas_wait">الرجاء الإنتظار</string>
+    <string name="rerigister_text">يمكنك أن تقوم بإعادة ادخال رقمك من خلال</string>
+    <string name="rerigister">اعادة تسجيل الدخول</string>
+    <string name="choose_time">إختر موعد الإنطلاق</string>
+    <string name="choose_time_dialog_title">الإنطلاق بعد ....</string>
+    <string name="choose_dest">إختر وجهتك</string>
+    <string name="choose_place">إختر مكان الإنطلاق</string>
+    <string name="use_my_loc">موقعي الحالي</string>
+    <string name="use_map_loc">تحديد الموقع على الخريطة</string>
+    <string name="address_desc">يمكنك أيضا اضافة وصف لمكان الإنطلاق</string>
     
+    <string name="sched_state_change_diag_title">تنبيه</string>
+    <string name="sched_state_change_diag_msg">حتى تقوم بتحديد رحلة مجدولة مسبقا يجب أن يكون لديك وسيلة نقل \n هل تريد تغير حالتك الى سائق؟</string>
+    
+    <string name="confirm_set_price">تم تحديد التسعيرة الجديدة بنجاح</string>
+    <string name="error_set_price">لم يتم تحديد التسعيرة الجديدة بنجاح</string>
+    <string name="error_invalid_version">هذه النسخة من تطبيق خدني معك أصبحت قديمة ....يرجى تحميل نسخة أحدث</string>
+    <string name="error_invalid_version_title">نسخة غير صالحة</string>
+    <string name ="error_service_temp_off">الخدمة متوقفة حاليا .... حاول لاحقا</string>
+    <string name="error_no_users_title">لا أحد</string>
+    <string name="error_no_users">لا يوجد مستخدمين  \nاخرين قربك حاليا</string>
+    <string name="error_repeated_connectivity_failure">فشل في الإتصال بالمخدم</string>
+    <string name="error_failed_to_request_verif_msg">فشلت عملية طلب رقم التأكيد الرجاء التأكد من الإتصال و المحاولة لاحقا </string>
+    <string name="error_failed_to_retrive_chat">لم يتمكن خدني معك من استرجاع المحادثة الرجاء الـأكد من الإتصال </string>
+    
+    <string name="destination_hint">إختر وجهتك</string>
+    
+    <string name="google_services_update_title">تحديث</string>
+    <string name="google_services_update_msg">أن اصدار google play services لديك قديم , يحتاج خدني معك  لتحديث الإصدار الموجود لديك</string>
+    
+    <string name="warning_max_sched_time">الزمن الأقصى لجدولة رحلة هو بعد ساعتين فقط</string>
+    
+    <string name="warning_not_chat">لا يوجد رسائل لعرضها</string>
+    <string name="no_events_yet">لا يوجد أحداث لعرضها</string>
     <string name="history">History</string>
-	<string name="about_us">About Us</string>
+	<string name="about_app">عن البرنامج</string>
+	<string name="about_us">من نحن</string>
 	<string name="my_acount">My Acount</string>
-	<string name="settings">Settings</string>
-	<string name="Notifications">Notifications</string>
+	<string name="settings">الإعدادات</string>
+	<string name="Notifications">التنبيهات</string>
+	<string name="schedule">جدولة رحلة</string>
 	<string name="Signout">SignOut</string>
 	<string name="Signin">SignIn</string>
 	
@@ -28,11 +91,31 @@
 	<string name="settings_notif_summary">التنبيهات التي تظهر على الشريط العلوي لأندرويد </string>
 	<string name="settings_notif_sound">أصوات التنبيهات</string>
 	<string name="settings_notif_sound_summary">تفعيل أصوات تنبيها شريط اندرويد الرئيسي</string>
-	<string name="settings_visibity">من يستطيع أن يراني</string>
+	<string name="settings_visibity">من يستطيع أن يراني؟</string>
 	<string name="settings_visibile_all">الجميع</string>	
 	<string name="settings_visibile_friends">الأصدقاء فقط</string>
 	<string name="settings_visibile_custom">أصدقاء محددون فقط</string>
 	<string name="settings_visibile_summary">يمكنك هنا تحديد الأشخاص الذين يستطيعون رؤيتك و تبادل الطلبات معك</string>
+	<string name="settings_user_type_driver">أرغب بايصال اشخاص أخرين على طريقي</string>	
+	<string name="settings_user_type_passenger">أبحث عن من يوصلني على طريقه</string>
+	
+	<string name="settings_sex">تحديد جنس من يستطيعون رؤيتي</string>
+	<string name="settings_sex_summary">يمكنكك من هنا تحديد جنس الأشخاص الذين يستطيعون رؤيتك</string>
+	
+	
+	<string name="about_us_text">برين سوكت  هي شركة تقنية ناشئة  تعمل على ايجاد حلول ابداعية لمشاكل الحياة اليومية لتحقيق استثمار أفضل للموارد و تحسين نمط الحياة</string>
+	<string name="about_us_more">يمكنكم اكتشاف المزيد عن خدماتنا من خلال المواقع التالية </string>
+
+	<string name="samer">محمد سامر الشطة</string>
+	<string name="molham">ملهم محمود</string>
+	<string name="dev_team_title" > فريق تطوير المشروع </string>
+	
+	
+	<string name="male">ذكور فقط</string>
+	<string name="female">إناث فقط</string>
+	<string name="both">كلاهما</string>
+	
+	<string name="verification_msg_resend">يمكنك طلب إعادة إرسال رمز التأكيد بعد 5 دقائق</string>
 	
 	<string name="acount_car_title"> معلومات السيارة </string>
 	<string name="acount_car_color"> لون السيارة </string>
@@ -49,12 +132,16 @@
 	<string name="acount_ride_price">التسعيرة</string>
 	<string name="acount_ride_price_summary">يمكنك من هنا تحديد التسعيرة التي تظهر لكل من يطلب توصيلة منك على أن التسعيرة تحسب لكل كيلومتر ك خط نظر بين الموقع الحالي و وجهة الرحلة</string>
 	
-	<string name="acount_ride_price1">1 ليرة لكل كيلومتر</string>
-	<string name="acount_ride_price2">5 ليرة لكل كيلومتر</string>
-	<string name="acount_ride_price3">10 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price0">بدون أجر</string>
+	<string name="acount_ride_price1">5 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price2">10 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price3">15 ليرة لكل كيلومتر</string>
 	<string name="acount_ride_price4">20 ليرة لكل كيلومتر</string>
-	<string name="acount_ride_price5">50 ليرة لكل كيلومتر</string>
-	<string name="acount_ride_price6">75 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price5">25 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price6">30 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price7">35 ليرة لكل كيلومتر</string>
+	<string name="acount_ride_price8">40 ليرة لكل كيلومتر</string>
+	
 	
 	<string name="black">أسود</string>
 	<string name="yellow">أصفر</string>
@@ -71,5 +158,36 @@
 	<string name="mer">Mercides</string>
 	<string name="hondai">Hondai</string>
 	
+	<!-- Guded tour -->
+	<string name="next">التالي</string>
+    <string name="prev">السابق</string>
+    <string name="finish">ابدأ</string>
+    <string name="review">استمتع</string>
+    
+    <string name="tour_title1">وداعا لإضاعة الوقت</string>
+    <string name="tour_title2">المستخدمون</string>
+    <string name="tour_title3">الوجهة</string>
+    <string name="tour_title4">مشاركة المواصلات</string>
+    <string name="tour_title5">قائمة التنبيهات</string>
+    <string name="tour_title7">دخل اضافي</string>
+    <string name="tour_title8">الخصوصية</string>
+    
+    <string name="tour_new_title1">إختر الى اين تريد الذهاب</string>
+    <string name="tour_new_title2">اختر هل انت سائق ام راكب</string>
+    <string name="tour_new_title3">ارسل طلب توصيلة الى احد الاشخاص حولك</string>
+    <string name="tour_new_title4">استمتع بالرحلة :)</string>
+    <string name="tour_new_btn_end">إبدأ</string>
+    
+    <string name="tour_msg1">"خدني معك" يساعدك على إيجاد مواصلات و مشاركة أصدقائك على الفيس بوك لوجهاتهم والتمتع بالمزيد من المرح والتسلية .</string>
+    <string name="tour_msg2">هناك فئتين من المستخدمين إما أشخاص يحتاجون لخدمة مواصلات أو أشخاص يملكون سيارات ومستعدين لتقديم هذه خدمة للآخرين اختر الفئة المستخدمين التي تنتمي إليها وانطلق</string>
+    <string name="tour_msg3">اختر المنطقة التي تود الذهاب إليها </string>
+    <string name="tour_msg4">يمكنك ارسال طلب الى أحد السائقين ليوصلك أو أن تتشارك مع راكب اخر في دفع تكاليف سيارة الأجرة</string>
+    <string name="tour_msg5">هي وسيلتك الأسرع لمعرفة ما يحصل حولك من طلبات أو إجابات الأشخاص الآخرين على طلباتك</string>
+    <string name="tour_msg7">"خدني معك" يفتح لك باباً جديداً لجمع المال من خلال توصيل الأشخاص على طريقك</string>
+    <string name="tour_msg8">يمكنك التحكم بالأشخاص الذين يستطيعون رؤيتك و تبادل الطلبات معك</string>
+    
+    
+    
+	<!-- end of Guded tour -->
 	
 </resources>

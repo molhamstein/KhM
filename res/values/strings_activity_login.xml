@@ -1,15 +1,16 @@
 <resources>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in_register"><b>Sign in</b> or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="your_account_safe">سوف تبقى معلومات حسابك بأمان و لن يتم نشر أي محتوى على صفحتك الشخصية</string>
+    <string name="prompt_email">أدخل رقم جوالك</string>
+    <string name="prompt_password">كلمة السر</string>
+    <string name="action_sign_in_register"><b>تسجيل الدخول</b> أو الإشتراك</string>
+    <string name="action_sign_in_short">تسجيل الدخول</string>
     <string name="menu_forgot_password">Recover lost password</string>
-    <string name="login_progress_signing_in">Signing in&#8230;</string>
-    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="login_progress_signing_in">تسجيل الدخول&#8230;</string>
+    <string name="error_invalid_email">رقم الهاتف غير صالح</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="error_field_required">يجب ملئ هذا الحقل</string>
 
 </resources>

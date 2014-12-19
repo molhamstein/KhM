@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WizardPageContainer">
+
+    <TextView style="@style/WizardPageTitle" 
+        android:text="@string/tour_title1"/>
+
+    <ImageView 
+        android:id="@+id/tour_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/appshout1"
+        android:padding="10dp"/>
+    
+    <TextView 
+        android:id="@+id/tour_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="16dp"
+        android:textSize="20sp"
+        android:text="@string/tour_msg3"
+        />
+
+</LinearLayout>

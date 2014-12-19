@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +12,17 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.brainSocket.Listners.BlockFriendListener;
 import com.brainSocket.Listners.getVisibilityAuthorizeUsersListListner;
-import com.brainSocket.data.Notifiable;
 import com.brainSocket.khednima3ak.KedniApp;
 import com.brainSocket.khednima3ak.R;
 import com.brainSocket.models.User;
 import com.google.android.gms.maps.model.LatLng;
 import com.squareup.picasso.Picasso;
 
-public class RideFriendsListAdapter extends BaseAdapter implements Notifiable<String> ,OnCheckedChangeListener{
+public class RideFriendsListAdapter extends BaseAdapter implements OnCheckedChangeListener{
 	
 	
 	
@@ -94,26 +91,6 @@ public class RideFriendsListAdapter extends BaseAdapter implements Notifiable<St
 	}
 
 
-
-	@Override
-	public void onDataReady(String data) {
-		
-		
-	}
-
-
-	@Override
-	public void onCursorReady(Cursor cur) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void onDataLoadFail(String msg) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
@@ -128,17 +105,5 @@ public class RideFriendsListAdapter extends BaseAdapter implements Notifiable<St
         	KedniApp.dataSrc.serverHandler.blockFriend(BlockCallback, friend.getId()) ;
 	}
 	
-	
-	//temp function 
-	private void  generateStubData () {
-		for (int i = 0 ; i< 15 ; i++ ){
-			User usr = new User(i, "ÝÊÍí" + i, new LatLng(36, 36), 2);
-			friends.add(usr);
-		}
-		
-	}
-
-
-
-		  
+			  
 }

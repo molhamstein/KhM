@@ -1,0 +1,37 @@
+
+<resources>
+    <dimen name="step_pager_tab_width">32dp</dimen>
+    <dimen name="step_pager_tab_height">3dp</dimen>
+    <dimen name="step_pager_tab_spacing">4dp</dimen>
+    
+    
+    <dimen name="diag_req">4dp</dimen>
+    
+    <dimen name="verification_lable">16sp</dimen>
+    
+    <dimen name="drawer_width">190dp</dimen>
+    <dimen name="drawer_content_width">180dp</dimen>
+    <dimen name="drawer_pic_width">70dp</dimen>
+    <dimen name="drawer_icon_size">60dp</dimen>
+    
+    <dimen name="marker_size">70dp</dimen>
+    <dimen name="marker_wraper_width">150dp</dimen>
+    <dimen name="marker_wraper_height">200dp</dimen>
+    <dimen name="marker_font_size">16sp</dimen>
+    <dimen name="marker_area_font_size">18sp</dimen>
+    
+    <dimen name="diag_change_state_padding">7dp</dimen>
+    <dimen name="diag_change_state_stripe_margin">30dp</dimen>
+    <dimen name="diag_change_state_icon_margin">10dp</dimen>
+    <dimen name="diag_change_state_icon_size">80dp</dimen>
+    <dimen name="diag_change_state_icon_padding">7dp</dimen>
+    
+    
+    <dimen name="diag_req_price_size">50sp</dimen>
+    <dimen name="diag_req_phone_size">50dp</dimen>
+    <dimen name="diag_req_sep_margin">10dp</dimen>
+    <dimen name="diag_req_btn_padding">20dp</dimen>
+    <dimen name="diag_req_image_holder">120dp</dimen>
+    
+    <dimen name="events_list_btn_size">35dp</dimen>
+</resources>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+     >
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:padding="@dimen/diag_change_state_padding"
+         android:orientation="horizontal" >
+         
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:orientation="vertical">
+	        
+		    <ImageButton
+		        android:id="@+id/btn_driver"
+		        android:layout_width="@dimen/diag_change_state_icon_size"
+		        android:layout_height="@dimen/diag_change_state_icon_size"
+		        android:src="@drawable/stat_icon_dri"
+		        android:scaleType="centerInside"
+		        android:padding="@dimen/diag_change_state_icon_padding"
+		        android:layout_marginTop="@dimen/diag_change_state_icon_margin"
+		        android:layout_marginBottom="@dimen/diag_change_state_icon_margin"
+		        android:layout_gravity="center_horizontal"
+		        android:background="@android:color/transparent"
+		        />
+		    
+		    <TextView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:gravity="center_horizontal"
+		        android:text="@string/settings_user_type_driver" />
+		    
+	    </LinearLayout>
+	    
+	     <View
+	            android:id="@+id/sep"
+	            android:layout_width="1dp"
+	            android:layout_height="150dp"
+	            android:background="#44444444"
+	            android:layout_marginLeft="10dp"
+	            android:layout_marginTop="30dp" 
+	            />
+	     <View
+	            android:id="@+id/sep2"
+	            android:layout_width="1dp"
+	            android:layout_height="150dp"
+	            android:background="#44dddddd"
+	            android:layout_marginRight="10dp"
+	            android:layout_marginTop="30dp"
+	            />
+	    
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:orientation="vertical">
+	        
+		    <ImageButton
+		        android:id="@+id/btn_passenger"
+		        android:layout_width="@dimen/diag_change_state_icon_size"
+		        android:layout_height="@dimen/diag_change_state_icon_size"
+		        android:src="@drawable/stat_icon_pass"
+		        android:scaleType="centerInside"
+		        android:background="@android:color/transparent"
+		        android:padding="@dimen/diag_change_state_icon_padding"
+		        android:layout_marginTop="@dimen/diag_change_state_icon_margin"
+		        android:layout_marginBottom="@dimen/diag_change_state_icon_margin"
+		        android:layout_gravity="center_horizontal"
+		        />
+		    
+		    <TextView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:gravity="center_horizontal"
+		        android:text="@string/settings_user_type_passenger" />
+		    
+	    </LinearLayout>
+	    
+	</LinearLayout>
+            
+    
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="10dp"
+    android:layout_marginTop="@dimen/diag_change_state_stripe_margin"
+    android:orientation="horizontal">
+	    
+		<ImageView 
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_weight="1"
+		    android:src="@color/drawer_stripe1"/>
+		<ImageView 
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_weight="1"
+		    android:src="@color/drawer_stripe2"/>
+		<ImageView 
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_weight="1"
+		    android:src="@color/drawer_stripe3"/>
+		<ImageView 
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_weight="1"
+		    android:src="@color/drawer_stripe4"/>
+</LinearLayout>
+
+</LinearLayout>

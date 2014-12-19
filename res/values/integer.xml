@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="marker_programatic_width">200</integer>
+    <integer name="marker_programatic_height">300</integer>
+
+</resources>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff111111"
+        android:orientation="vertical"
+        android:paddingTop="0dp"
+        android:paddingRight="0dp"
+        android:paddingLeft="0dp"
+        android:paddingBottom="20dp" >
+
+        <LinearLayout
+            android:id="@+id/time_holder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/diag_sch_image_holder"
+            android:background="@drawable/damas"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/time"
+                style="@style/txtUltraBig"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/choose_time"
+                android:textColor="@color/green_light"
+                android:textSize="@dimen/diag_sch_price_size"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/dest"
+                style="@style/txtUltraBig"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/choose_time"
+                android:textColor="@color/green_light"
+                android:textSize="@dimen/diag_sch_price_size"
+                android:visibility="gone" />
+            
+            
+            <TextView
+                android:id="@+id/description"
+                style="@style/txtUltraBig"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/choose_time"
+                android:textColor="@color/green_light"
+                android:textSize="12sp"
+                android:visibility="gone" />
+            
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_set_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/time_holder"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/btn_bg_green"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/choose_time"
+            android:textColor="@android:color/white"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/btn_set_dest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/btn_set_time"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="20dp"
+			android:gravity="center"
+            android:background="@drawable/btn_bg_red"
+            android:enabled="false"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/choose_dest"
+            android:textColor="@android:color/white" />
+
+        <LinearLayout
+            android:id="@+id/place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_set_dest"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp" >
+
+            <TextView
+                android:id="@+id/text_abfahren_from"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:text="@string/choose_place"
+                android:textColor="@android:color/white" >
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_abfahren_from"
+                android:gravity="center_vertical" >
+
+                <Button
+                    android:id="@+id/btn_use_map_loc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_bg_green"
+                    android:drawablePadding="10dp"
+                    android:enabled="false"
+                    android:padding="5dp"
+                    android:text="@string/use_map_loc"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/btn_use_my_loc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_bg_red"
+                    android:drawablePadding="10dp"
+                    android:enabled="false"
+                    android:padding="5dp"
+                    android:text="@string/use_my_loc"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/text_address_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp"
+                android:hint="@string/address_desc" />
+        </LinearLayout>
+        
+        
+
+        <LinearLayout
+            android:id="@+id/confirmation_holder"
+            style="@android:style/ButtonBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/place_holder"
+            android:background="@android:color/transparent"
+            android:minHeight="40dp"
+            android:orientation="horizontal"
+            android:paddingEnd="0dip"
+            android:paddingTop="0dp"
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/btn_cansle"
+                style="android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selectable_item_background"
+                android:text="@string/cansle"
+                android:textColor="@android:color/white" />
+            
+            <Button
+                android:id="@+id/btn_del"
+                style="android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selectable_item_background"
+                android:text="@string/delete"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_ok"
+                style="android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selectable_item_background"
+                android:text="@string/ok"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+        
+    </RelativeLayout>
+
+</ScrollView>

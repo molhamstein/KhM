@@ -5,6 +5,9 @@
     <color name="khedni1">#ffffdb02</color>
     <color name="khedni2">#fff39106</color>
     
+    <color name="btn1_1">#dd047967</color>
+    <color name="btn1_2">#bb047967</color>
+    
     
     <color name="notification1">#ff36c6ab</color>
     <color name="notification2">#ffbfd62e</color>
@@ -13,7 +16,11 @@
     <color name="notification_font1">#ffffffff</color>
     <color name="notification_font2">#ff1a9c82</color>
     
-    <color name="green_dark">#ff73b760</color>
+    <color name="green_dark">#ff2fae0a</color>
+    <color name="green_light">#ffd1ffc4</color>
+    <color name="blue_light">#ff0d91e4</color>
+    <color name="red_dark">#ffff3e3e</color>
+    <color name="btn_disabled">#ff333333</color>
     
     <color name="gray_very_dark">#ff444444</color>
     <color name="gray_dark">#ff2d2d2d</color>
@@ -22,14 +29,34 @@
     <color name="drawer_bg1">#ffeeeeee</color>
     <color name="drawer_bg2">#ffdddddd</color>
     
+    <color name="drawer_stripe1">#ff009a5e</color>
+    <color name="drawer_stripe2">#ff00aab7</color>
+    <color name="drawer_stripe3">#ffff9f0d</color>
+    <color name="drawer_stripe4">#ffe94745</color>
+    <color name="drawer_stripe5">#ff333333</color>
+    
     <color name="gray_sep_top">#fffefefe</color>
     <color name="gray_sep_bot">#ffbbbbbb</color>
     
     <color name="red_msg">#ffec6957</color>
     
     <color name="semi_trans">#99333333</color>
+    <color name="semi_trans_bg">#cf000000</color>
     
     <color name="list_elem_bg">#ffeeeeee</color>
     
+    <color name="hint_color">#ff3f1043</color>
+    <color name="link_color">#ff3f10ff</color>
+    
+    <!-- Guided tour -->
+    <color name="step_pager_previous_tab_color">#4433b5e5</color>
+    <color name="step_pager_selected_tab_color">#ff0099cc</color>
+    <color name="step_pager_selected_last_tab_color">#ff669900</color>
+    <color name="step_pager_next_tab_color">#10000000</color>
+
+    <color name="review_green">#ff669900</color>
+
+    <color name="text_light">#66000000</color>
+    <!-- end of Guided tour -->
     
 </resources>

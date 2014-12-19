@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/events_list_height"
+    android:background="#c34d5967"
+    android:orientation="vertical" >
+
+     <View
+        android:id="@+id/side_stripe"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@color/drawer_stripe3" >
+    </View>
+    
+    <ImageView
+        android:id="@+id/img_event"
+        android:layout_width="@dimen/events_list_photo_size"
+        android:layout_height="@dimen/events_list_photo_size"
+        android:layout_marginRight="@dimen/events_list_photo_margin_right"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@id/side_stripe"
+        android:scaleType="fitXY"
+        android:src="@drawable/check" />
+
+    <TextView
+        android:id="@+id/partner_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@id/img_event"
+        android:layout_toRightOf="@id/btn_holder"
+        android:ellipsize="marquee"
+        android:text="سامر الشطة hgf ffuud'd s"
+        android:textColor="#efefef"
+        android:gravity="right"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/partner_name"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10px"
+        android:layout_toLeftOf="@id/img_event"
+        android:layout_toRightOf="@id/btn_holder"
+        android:ellipsize="marquee"
+        android:gravity="right"
+        android:maxLines="4"
+        android:text="طالب جامعي"
+        android:textColor="#cccccc" />
+    
+    
+    <TextView
+        android:id="@+id/tvdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20px"
+        android:layout_alignParentRight="true"
+        android:ellipsize="marquee"
+        android:gravity="right"
+        android:maxLines="4"
+        android:text="طالب جامعي"
+        android:textColor="#cccccc" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="#37404b"
+        android:layout_toRightOf="@id/btn_holder"/>
+        
+        
+    <LinearLayout
+        android:id="@+id/btn_holder"
+        android:layout_width="@dimen/events_list_btn_container_width"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="11dp"
+        android:paddingRight="11dp" >
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="@dimen/events_list_btn_size"
+            android:layout_height="@dimen/events_list_btn_size"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/check" />
+
+        <Button
+            android:id="@+id/btn_no"
+            android:layout_width="@dimen/events_list_btn_size"
+            android:layout_height="@dimen/events_list_btn_size"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/close" />
+    </LinearLayout>
+
+   
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="#ff444444" >
+    </View>
+
+</RelativeLayout>

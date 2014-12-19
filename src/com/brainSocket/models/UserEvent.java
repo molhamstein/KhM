@@ -28,11 +28,13 @@ public class UserEvent {
 	private int id ;
 	private int globalId ;
 	private int partnerId ;
+	private String partnerFBId ;
 	private String partnerName ;
 	private UserEventType type ;
 	private Date date ; 
 	private int extraData1 ;
 	private int extraData2 ;
+	private boolean isEventActive ;
 	
 	public boolean isEventActive() {
 		return isEventActive;
@@ -42,10 +44,26 @@ public class UserEvent {
 	public void setEventActive(boolean isEventActive) {
 		this.isEventActive = isEventActive;
 	}
+	
+	public void setEventActive(int isEventActive) {
+		if( isEventActive !=0 ){
+			this.isEventActive = true;
+			return ;
+		}
+		this.isEventActive = false;
+	}
+	
+	
+	public String getPartnerFBId() {
+		return partnerFBId;
+	}
 
-	private boolean isEventActive ;
-	
-	
+
+	public void setPartnerFBId(String partnerFBId) {
+		this.partnerFBId = partnerFBId;
+	}
+
+
 	public String getTitle() {
 		return title;
 	}
@@ -137,9 +155,9 @@ public class UserEvent {
 	public void setDate(Date date) {
 		Date dateNow = Calendar.getInstance().getTime() ;
 		long diff = dateNow.getTime() - date.getTime() ;
+		this.date = date;
 		if(diff >= 0){
-			this.date = date;
-			if(diff < 1000L)
+			if(diff < 849505L) // approx 3 minutes
 				isEventActive = true ;
 			return ;
 		}
@@ -192,16 +210,20 @@ public class UserEvent {
 			event.setTitle(evTitle);
 			event.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.ID)));
 			event.setGlobalId(cursor.getInt(cursor.getColumnIndex(DBHelper.EVENT_GLOBAL_ID)));
-			event.setGlobalId(cursor.getInt(cursor.getColumnIndex(DBHelper.EVENT_PARTNER_ID)));
+			event.setPartnerId(cursor.getInt(cursor.getColumnIndex(DBHelper.EVENT_PARTNER_ID)));
 			event.setDescription(cursor.getString(cursor.getColumnIndex(DBHelper.EVENT_DESC)));
 			event.setExtraData1(cursor.getInt(cursor.getColumnIndex(DBHelper.EVENT_DATA1)));
 			event.setExtraData2(cursor.getInt(cursor.getColumnIndex(DBHelper.EVENT_DATA2)));
+			event.setPartnerFBId(cursor.getString(cursor.getColumnIndex(DBHelper.EVENT_PARTNER_FB_ID)));
 			String sDate = cursor.getString(cursor.getColumnIndex(DBHelper.EVENT_date)) ;
 			Date date =  UserEvent.getFormatedDate(sDate);
 			event.setDate(date);
 			String typeS = cursor.getString(cursor.getColumnIndex(DBHelper.EVENT_TYPE));
 			UserEventType type = UserEventType.valueOf(typeS); 
 			event.setType(type);
+			int isActive = cursor.getInt(cursor.getColumnIndex(DBHelper.EVENT_IS_ACTIVE)) ;
+			if (isActive == 0 )///////////// take "EVENT_IS_ACTIVE" in consideratin only if its false else let the dessision for the date 
+				event.setEventActive(false);
 			events.add(event);
 			cursor.moveToNext();
 		}

@@ -26,7 +26,7 @@ public final class R {
 		public static final int abc_activity_chooser_view = 0x7f03000c;
 		public static final int abc_popup_menu_item_layout = 0x7f030014;
 		public static final int abc_action_mode_close_item = 0x7f03000b;
-		public static final int support_simple_spinner_dropdown_item = 0x7f030035;
+		public static final int support_simple_spinner_dropdown_item = 0x7f030047;
 		public static final int abc_expanded_menu_layout = 0x7f03000f;
 		public static final int abc_list_menu_item_checkbox = 0x7f030010;
 		public static final int abc_action_bar_decor = 0x7f030000;
@@ -152,7 +152,7 @@ public final class R {
 	public static final class color {
 		public static final int abc_search_url_text_normal = 0x7f080007;
 		public static final int abc_search_url_text_selected = 0x7f080008;
-		public static final int abc_search_url_text_holo = 0x7f080028;
+		public static final int abc_search_url_text_holo = 0x7f08003c;
 		public static final int abc_search_url_text_pressed = 0x7f080009;
 	}
 	public static final class string {

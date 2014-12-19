@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    
+    <PreferenceCategory
+            android:title="@string/acount_ride_title">
+<!-- 
+        <CheckBoxPreference
+                android:key="acount_data_driver"
+                android:title="@string/acount_ride_driver"
+                android:summary="@string/acount_ride_driver_summary"
+                android:defaultValue="false"
+                 />
+ -->        
+        
+        
+	      <ListPreference
+	                android:key="dataprice"
+	                android:title="@string/acount_ride_price"
+	                android:summary="@string/acount_ride_price_summary"
+	                android:entries="@array/ride_price"
+	                android:entryValues="@array/ride_price_values"
+	                android:defaultValue="1"
+	                 />
+
+    </PreferenceCategory>
+
+    
+    <!-- <PreferenceCategory
+            android:title="@string/acount_car_title">
+
+        
+        <CheckBoxPreference
+                android:key="acount_data_have_car"
+                android:title="@string/acount_car_have"
+                 />
+        
+        <ListPreference
+                android:key="acount_data_car_color"
+                android:title="@string/acount_car_color"
+                android:dependency="acount_data_have_car"
+                android:entries="@array/car_colors"
+                android:entryValues="@array/car_colors_values"
+                android:defaultValue="1"
+                 />
+        <ListPreference
+                android:key="acount_data_car_type"
+                android:title="@string/acount_car_type"
+                android:dependency="acount_data_have_car"
+                android:entries="@array/car_types"
+                android:entryValues="@array/car_types_values"
+                android:defaultValue="1"
+                 />
+
+    </PreferenceCategory> -->
+    
+      <PreferenceCategory
+            android:title="@string/settings_notif_title">
+
+        <CheckBoxPreference
+                android:key="enabnotifs"
+                android:title="@string/settings_notif"
+                android:summary="@string/settings_notif_summary"
+                android:defaultValue="true"
+                 />
+        
+        <CheckBoxPreference
+                android:key="enabsounds"
+                android:title="@string/settings_notif_sound"
+                android:summary="@string/settings_notif_sound_summary"
+                android:defaultValue="true"
+                 />
+
+    </PreferenceCategory>
+
+    
+    <PreferenceCategory
+            android:title="@string/settings_visibity"
+            android:summary="@string/settings_visibile_summary">
+
+        <ListPreference
+	        android:key="vislevel"
+	        android:title="@string/settings_visibity"
+	        android:summary="@string/settings_visibile_summary"
+	        android:dialogTitle="@string/settings_visibity"
+	        android:entries="@array/visibility"
+	        android:entryValues="@array/visibilityValues"
+	        android:defaultValue="0"
+
+         />
+        
+        <ListPreference
+	        android:key="accsex"
+	        android:title="@string/settings_sex"
+	        android:summary="@string/settings_sex_summary"
+	        android:dialogTitle="@string/settings_sex"
+	        android:entries="@array/userssex"
+	        android:entryValues="@array/userssexValues"
+	        android:defaultValue="2"
+
+         />
+
+    </PreferenceCategory>
+ 
+</PreferenceScreen>

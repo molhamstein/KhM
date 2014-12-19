@@ -7,15 +7,14 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.database.Cursor;
-import android.util.Log;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
 
 import com.brainSocket.data.Notifiable;
 import com.brainSocket.khednima3ak.KedniApp;
+import com.brainSocket.khednima3ak.R;
 import com.brainSocket.models.AbstractModel;
 import com.brainSocket.models.User;
-import com.google.android.gms.maps.model.LatLng;
 
 public class getVisibilityAuthorizeUsersListListner extends AbstractModel implements Notifiable<String> 
 {
@@ -50,6 +49,7 @@ public class getVisibilityAuthorizeUsersListListner extends AbstractModel implem
 					user=new User(ob.getInt("id"), ob.getString("name"),true);
 				user.setFacebookID(ob.getString("facebookID"));
 				users.add(user);
+				
 			}
 			this.users.clear();
 			this.users.addAll(users);
@@ -58,7 +58,7 @@ public class getVisibilityAuthorizeUsersListListner extends AbstractModel implem
 		}
 		catch(Exception c)
 		{
-			Log.e("error",c.getMessage());
+//			Log.e("error",c.getMessage());
 		}
 	}
 
@@ -68,10 +68,16 @@ public class getVisibilityAuthorizeUsersListListner extends AbstractModel implem
 		
 	}
 
+	int failuresCount = 0 ;
 	@Override
 	public void onDataLoadFail(String msg) {
-		// TODO Auto-generated method stub
-		
+		failuresCount ++ ;
+		if(failuresCount <= failuresAllowed){
+			KedniApp.dataSrc.serverHandler.doRequest(this, msg) ;
+		}else{
+			//TODO we should notefy the user about the failure
+			failuresCount = 0 ;
+			KedniApp.promptMgr.showToast(KedniApp.appContext.getString(R.string.error_repeated_connectivity_failure), Toast.LENGTH_LONG) ;
+		}
 	}
-	
 }

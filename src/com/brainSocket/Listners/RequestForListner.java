@@ -6,11 +6,12 @@ import java.util.Date;
 import org.json.JSONObject;
 
 import android.database.Cursor;
-import android.util.Log;
+
 import android.widget.Toast;
 
 import com.brainSocket.data.Notifiable;
 import com.brainSocket.khednima3ak.KedniApp;
+import com.brainSocket.khednima3ak.R;
 import com.brainSocket.models.AbstractModel;
 import com.brainSocket.models.UserEvent;
 
@@ -31,27 +32,28 @@ public class RequestForListner extends AbstractModel implements Notifiable<Strin
 		{
 			JSONObject o=new JSONObject(data);
 			int flag=o.getInt(KedniApp.flag);
-			int areaID = o.getInt(AREA_ID_KEY);
-			if(flag<0 || areaID < 0)
+			//int areaID = o.getInt(AREA_ID_KEY);
+			if(flag<0)
 			{
 				errorIndex=flag;
 				Toast.makeText(KedniApp.getContext(), errors.get(flag), Toast.LENGTH_SHORT).show();
 			}else{
+				/// need to handle this response
 				UserEvent requestRegister = new UserEvent();
 				requestRegister.setTitle(UserEvent.TITLE_RIDE_REQ);
 				requestRegister.setDescription("Ride request Is sent");
-				requestRegister.setGlobalId(30);
+				requestRegister.setGlobalId(flag);
 				Date dt = new Date(System.currentTimeMillis());
 				requestRegister.setDate(dt);
-				KedniApp.registerUserEvent(requestRegister);
-				KedniApp.SetGoalID(areaID);
-				KedniApp.setDestinationID(areaID);
+				//KedniApp.registerUserEvent(requestRegister);
+				//KedniApp.SetGoalID(areaID);
+				//KedniApp.setDestinationID(areaID);
 			}
 			
 		}
 		catch(Exception c)
 		{
-			Log.e("error", c.getMessage());
+	//		Log.e("error", c.getMessage());
 		}
 	}
 
@@ -61,10 +63,17 @@ public class RequestForListner extends AbstractModel implements Notifiable<Strin
 		
 	}
 
+	int failuresCount = 0 ;
 	@Override
 	public void onDataLoadFail(String msg) {
-		// TODO Auto-generated method stub
-		
+		failuresCount ++ ;
+		if(failuresCount <= failuresAllowed){
+			KedniApp.dataSrc.serverHandler.doRequest(this, msg) ;
+		}else{
+			//TODO we should notefy the user about the failure
+			failuresCount = 0 ;
+			KedniApp.promptMgr.showToast(KedniApp.appContext.getString(R.string.error_repeated_connectivity_failure), Toast.LENGTH_LONG) ;
+		}
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.concurrent.TimeoutException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,13 +13,16 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 public class ServerClient extends AsyncTask<String, String ,String> {
 
-	Notifiable caller ; 
+	Notifiable caller ;
+	String url ;
 	
 	public ServerClient(Notifiable caller) {
 		this.caller =  caller;
@@ -32,15 +36,13 @@ public class ServerClient extends AsyncTask<String, String ,String> {
 	protected String doInBackground(String... url) {
 		String resp ;
 		try{
+			this.url = url[0] ;
 			resp = readServerResponse( url[0]) ;
 			
-		} catch (ClientProtocolException e) {
+		} catch (Exception e) {
 		      e.printStackTrace();
 		      resp = "error";
-		} catch (IOException e) {
-		      e.printStackTrace();
-		      resp = "error";
-		}
+		} 
 		
 		
 		return resp;
@@ -52,7 +54,11 @@ public class ServerClient extends AsyncTask<String, String ,String> {
 		
 		super.onPostExecute(result);
 		if(caller != null){
-			caller.onDataReady(result);
+			if ( result.equals("error") ){
+				caller.onDataLoadFail(url) ;
+			}else{
+				caller.onDataReady(result);
+			}
 		}
 
 		
@@ -61,10 +67,25 @@ public class ServerClient extends AsyncTask<String, String ,String> {
 
 	public String readServerResponse(String url) throws ClientProtocolException, IOException {
 	    StringBuilder builder = new StringBuilder();
-	    HttpClient client = new DefaultHttpClient();
+	    
+	    HttpParams httpParameters = new BasicHttpParams();	   
+	    int timeoutConnection = 3500;
+	    HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
+	    int timeoutSocket = 5000;
+	    HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
+	    
+	    HttpClient client = new DefaultHttpClient(httpParameters);
 	    HttpGet httpGet = new HttpGet(url);
 	    
+	    httpGet.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	    httpGet.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	    
+	    //httpGet.setDateHeader("Expires", 0);
+	    
+	    
 	      HttpResponse response = client.execute(httpGet);
+	      
+	      
 	      StatusLine statusLine = response.getStatusLine();
 	      int statusCode = statusLine.getStatusCode();
 	      if (statusCode == 200) {

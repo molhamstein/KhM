@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="30dp"
+        android:background="#111111"
+         >
+
+        <com.brainSocket.Views.CircularSeekBar
+            android:id="@+id/radial_seekbar"
+            android:layout_width="@dimen/diag_pick_time_seek_size"
+            android:layout_height="@dimen/diag_pick_time_seek_size"
+            android:layout_centerInParent="true"
+            android:padding="20dp" />
+
+        <TextView
+            android:id="@+id/time_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+			android:gravity="center"
+			android:textSize="@dimen/diag_pick_time_font_size"
+            android:text="Time" />
+        
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/confirmation_holder"
+        style="@android:style/ButtonBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:minHeight="40dp"
+        android:orientation="horizontal"
+        android:paddingEnd="0dip"
+        android:paddingTop="0dp" >
+
+        <Button
+            android:id="@+id/btn_ok"
+            style="android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selectable_item_background"
+            android:text="@string/ok"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>

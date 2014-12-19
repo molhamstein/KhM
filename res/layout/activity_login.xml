@@ -31,15 +31,35 @@
 
     <!-- Login form -->
 
-    <ScrollView
+    <RelativeLayout
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:gravity="center_vertical" >
 
         <LinearLayout
-            style="@style/LoginFormContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/verification_padding"
+            android:layout_marginRight="@dimen/verification_padding"
+            android:layout_marginTop="-30dp"
             android:orientation="vertical"
-            android:layout_marginTop="30dp" >
+            android:background="@drawable/bg_form"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+             >
+             
+            <TextView
+                android:layout_width="match_parent" 
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:gravity="center_horizontal"
+                android:text="@string/your_account_safe"
+                android:textColor="@android:color/black"
+                />
 
             <EditText
                 android:id="@+id/phone_num"
@@ -47,31 +67,23 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_email"
                 android:inputType="phone"
+                android:maxLength="10"
                 android:maxLines="1"
-                android:singleLine="true" />
-<!-- 
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/prompt_password"
-                android:imeActionId="@+id/login"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true" />
- -->
-            <Button
+                android:singleLine="true"
+                android:layout_marginTop="15dp"
+                 />
+
+            <ImageButton
                 android:id="@+id/sign_in_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginTop="16dp"
-                android:paddingLeft="32dp"
-                android:paddingRight="32dp"
-                android:text="@string/action_sign_in_register" />
+                android:layout_marginTop="30dp"
+                android:background="@android:color/transparent"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:src="@drawable/btn_fb" />
         </LinearLayout>
-    </ScrollView>
+    </RelativeLayout>
 
 </merge>

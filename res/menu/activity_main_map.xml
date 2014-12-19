@@ -1,16 +1,10 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
 
  
-    <item
-        android:id="@+id/action_pwr"
-        android:orderInCategory="100"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_pwr"/>
-
-    <item
-        android:id="@+id/action_ststus"
-        android:orderInCategory="101"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_status"/>
-        
+      <item android:id="@+id/action_ststus"
+          android:icon="@drawable/ic_status_pass"
+          android:title="@string/action_status" 
+          app:showAsAction="always"/>
+      
 </menu>
